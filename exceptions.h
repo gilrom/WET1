@@ -6,7 +6,7 @@
 namespace wet1
 {
     class Exception : public std::exception {};
-
-    class NoSuchAModel : public Exception {};
+    class EmptyTree : public Exception {};
+    class NotFound : public Exception {};
 }
 #endif

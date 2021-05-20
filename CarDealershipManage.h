@@ -5,6 +5,12 @@
 #include "library.h"
 #include <string>
 
+typedef enum {
+    CAR_TPYES,
+    POS_MODEL_SCORES,
+    NEG_MODEL_SCORES,
+} TreeType;
+
 namespace wet1
 {
     class CarModel
@@ -56,22 +62,13 @@ namespace wet1
             bool operator() (CarModel* const model1 , CarModel* const model2);
     };
 
-    /**
-     * object function to print a model by getting
-     * it's pointer
-     */
-    class PrintModel
-    {
-        public:
-            std::string operator() (CarModel* const model1) const;
-    };
-
     class CarType
     {
-        int typeId, models_num, best_seller_model_num;
+        int typeId, models_num;
+        CarModel* best_seller_model;
         CarModel** models;
         /*zeros tree*/
-        AvlTree<CarModel*, CompModelNum, PrintModel>* zero_score_modelIds;
+        AvlTree<CarModel*, CompModelNum>* zero_score_modelIds;
         public:
             CarType(int id, int numOfModels);
             /*ctor for dummy CarType that will only hold typeID, used for searching*/
@@ -80,11 +77,12 @@ namespace wet1
             CarModel* getModelByNum(int modelNum);
             int getId();
             int getNumOfModels();
-            int getBestSeller();
-            void setBestSeller(int new_best_seller_num);
+            CarModel* getBestSeller();
+            void setBestSeller(CarModel* new_best_seller);
             void addToZeroTree(CarModel* model);
             void removeFromZeroTree(CarModel* model);
             void printZeroScoreModels(int& amount);
+            void efficiantInorder(TreeType tree_type, int& amount, int& index, int* types, int* models);
     };
 
     /**
@@ -101,10 +99,14 @@ namespace wet1
     {
         private:
             AvlTree<CarType*, CompTypeId> carTypes;
-            AvlTree<CarModel*, CompModelSales, PrintModel> modelSales;
-            AvlTree<CarModel*, CompModelScore, PrintModel> PosModelScores;
-            AvlTree<CarModel*, CompModelScore, PrintModel> NegModelScores;
-            CarModel* best_seller;
+            AvlTree<CarModel*, CompModelSales> modelSales;
+            AvlTree<CarModel*, CompModelScore> PosModelScores;
+            AvlTree<CarModel*, CompModelScore> NegModelScores;
+            int types_num, num_of_models;
+            void efficiantInorder(AvlTreeNode<CarModel*>* base,
+             int& amount, int& index, int* types, int* models);
+            void inOrder(AvlTreeNode<CarModel*>* root,
+             int& amount, int& index, int* types, int* models);
         public:
             CarDealershipManage();
             StatusType AddCarType (int typeId, int numOfModels);
@@ -114,5 +116,6 @@ namespace wet1
             StatusType GetBestSellerModelByType (int typeId, int* modelId);
             StatusType GetWorstModels (int numOfModels, int* types, int* models);
     };
+
 }
 #endif

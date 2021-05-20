@@ -9,6 +9,7 @@ using std::ostream;
 using std::string;
 using namespace wet1;
 
+
 /*CarModel application*/
 
 CarModel::CarModel() : model_type(0), model_num(0), sails(0), score(0) {}
@@ -35,16 +36,6 @@ int CarModel::getScore()
     return score;
 }
 
-// void CarModel::setType(int type)
-// {
-//     model_type = type;
-// }
-
-// void CarModel::setModelNum(int model)
-// {
-//     model_num = model;
-// }
-
 void CarModel::operator++(int)
 {
     sails++;
@@ -61,28 +52,31 @@ void CarModel::complain(int t)
 
 /*ctor*/
 CarType::CarType(int type, int numOfModels) : typeId(type), models_num(numOfModels),
- best_seller_model_num(0),models(nullptr), zero_score_modelIds(nullptr)
+ best_seller_model(nullptr),models(nullptr), zero_score_modelIds(nullptr)
 {
     models = new CarModel* [models_num];
     for (int i = 0; i < models_num; i++)
     {
         models[i] = new CarModel(typeId, i);
     }
-    zero_score_modelIds = new AvlTree<CarModel*, CompModelNum, PrintModel>(models, 0, numOfModels-1);
+    zero_score_modelIds = new AvlTree<CarModel*, CompModelNum>(models, 0, numOfModels-1);
 }
 
 CarType::CarType(int type) : typeId(type), models_num(0),
- best_seller_model_num(0),models(nullptr), zero_score_modelIds(nullptr) {}
+ best_seller_model(nullptr),models(nullptr), zero_score_modelIds(nullptr) {}
 
 /*dtor*/
 CarType::~CarType()
 {
-    for (int i = 0; i < models_num; i++)
+    if(models)
     {
-        delete models[i];
+        for (int i = 0; i < models_num; i++)
+        {
+            delete models[i];
+        }
+        delete[] models;
+        delete zero_score_modelIds;
     }
-    delete[] models;
-    delete zero_score_modelIds;
 }
 
 /**
@@ -90,10 +84,6 @@ CarType::~CarType()
  **/
 CarModel* CarType::getModelByNum(int modelNum)
 {
-    if(modelNum >= models_num)
-    {
-        throw NoSuchAModel();
-    }
     return models[models_num];
 }
 
@@ -113,17 +103,17 @@ int CarType::getNumOfModels()
 /**
  * returns the best seller model if exist
 */
-int CarType::getBestSeller()
+CarModel* CarType::getBestSeller()
 {
-    return best_seller_model_num;
+    return best_seller_model;
 }
 
 /**
  * sets the best seller model num
 */
-void CarType::setBestSeller(int new_best_seller_num)
+void CarType::setBestSeller(CarModel* new_best_seller)
 {
-    best_seller_model_num = new_best_seller_num;
+    best_seller_model = new_best_seller;
 }
 
 /*adds model to zero tree*/
@@ -153,34 +143,32 @@ void CarType::printZeroScoreModels(int& amount)
 
 bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2)
 {
-    return (model1->getModelNum()) < model2->getModelNum();
+    return model1->getModelNum() < model2->getModelNum();
 }
 
 bool CompModelSales::operator()(CarModel* const model1 , CarModel* const model2)
 {
-    return (model1->getSails()) < model2->getSails();
+    if(model1->getSails() == model2->getSails())
+        return model1->getType() > model2->getSails();
+    return model1->getSails() < model2->getSails();
 }
 
 bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2)
 {
-    return (model1->getScore()) < model2->getScore();
+    return model1->getScore() < model2->getScore();
 }
 
 bool CompTypeId::operator()(CarType* const type1 , CarType* const type2)
 {
-    return (type1->getId()) < type2->getId();
+    return type1->getId() < type2->getId();
 }
 
-string PrintModel::operator() (CarModel* const model1) const
-{
-    return std::to_string(model1->getType()) + "	|	" + std::to_string(model1->getType());
-}
-/*CarDealershipManage application*/
+/*************CarDealershipManage application*********************************************************/
 
 /*ctor*/
 CarDealershipManage::CarDealershipManage() : carTypes(), modelSales(),
- PosModelScores(), NegModelScores(), best_seller(nullptr)
-{}
+ PosModelScores(), NegModelScores(), types_num(0), num_of_models(0)
+ {}
 
 StatusType CarDealershipManage::AddCarType(int typeId, int numOfModels)
 {
@@ -196,20 +184,19 @@ StatusType CarDealershipManage::AddCarType(int typeId, int numOfModels)
         delete car_type;
         return ALLOCATION_ERROR;
     }
-    if (!carTypes.find(car_type))
-    {
+    try {
+        carTypes.find(car_type);
+    }
+    catch(NotFound()){
         carTypes.addElement(car_type);
+        car_type->setBestSeller(0); //set best seller of this type as model 0
+        types_num++;
+        num_of_models += numOfModels;
+        return SUCCESS;
     }
-    else //already exist
-    {
-        delete car_type;
-        return FAILURE;
-    }
-    if(!best_seller)/*the system was empty before insert*/
-    {
-        best_seller = car_type->getModelByNum(0);
-    }
-    return SUCCESS;
+    //already exist
+    delete car_type;
+    return FAILURE;
 }
 
 StatusType CarDealershipManage::RemoveCarType (int typeId)
@@ -223,17 +210,217 @@ StatusType CarDealershipManage::RemoveCarType (int typeId)
     catch(std::bad_alloc()){
         return ALLOCATION_ERROR;
     }
-    AvlTreeNode<CarType*>* node = carTypes.find(tmp);
-    if(!node)
+    CarType* car_type = nullptr;
+    try{
+        car_type = carTypes.find(tmp);
+    }
+    catch(NotFound()){
+        delete tmp;
         return FAILURE;
-    CarType* car_type = node->get_data();
-    /*delete this type model of all trees O(mlog(M))*/
+    }
+    delete tmp;
+    /*delete this type models of all trees O(mlog(M))*/
+    CarModel* model = nullptr;
     for (int i = 0; i < car_type->getNumOfModels(); i++)
     {
-        modelSales.deleteElement(car_type->getModelByNum(i));
+        model = car_type->getModelByNum(i);
+        modelSales.deleteElement(model);
+        PosModelScores.deleteElement(model);
+        NegModelScores.deleteElement(model);
     }
-    
+    num_of_models -= car_type->getNumOfModels();
+    delete car_type;
+    types_num--;
+    return SUCCESS;
 }
 
+StatusType CarDealershipManage::SellCar (int typeId, int modelId)
+{
+    if(typeId <=0 || modelId < 0)
+    {
+        return INVALID_INPUT;
+    }
+    CarType* tmp = nullptr;
+    try{
+        tmp = new CarType(typeId);
+    }
+    catch(std::bad_alloc()){
+        return ALLOCATION_ERROR;
+    }
+    CarType* car_type = nullptr;
+    try{
+        car_type = carTypes.find(tmp);
+    }
+    catch(NotFound()){
+        delete tmp;
+        return FAILURE;
+    }
+    delete tmp;
+    CarModel* model = car_type->getModelByNum(modelId);
+    modelSales.deleteElement(model);
+    NegModelScores.deleteElement(model);
+    (*model)++; //add to model sales
+    //update this type best seller
+    CarModel* type_best_seller = car_type->getBestSeller();
+    if(type_best_seller->getSails() < model->getSails())
+        car_type->setBestSeller(model);
+    modelSales.addElement(model);
+    if(model->getScore() > 0)
+    {
+        car_type->removeFromZeroTree(model);
+        PosModelScores.addElement(model);
+    }
+    else if(model->getScore() < 0)
+    {
+        NegModelScores.addElement(model);
+    }
+    else //model new score is 0
+    {
+        car_type->addToZeroTree(model);
+    }
+    return SUCCESS;
+}
+
+StatusType CarDealershipManage::MakeComplaint (int typeId, int modelId, int t)
+{
+    if(typeId <=0 || modelId < 0 || t <= 0)
+    {
+        return INVALID_INPUT;
+    }
+    CarType* tmp = nullptr;
+    try{
+        tmp = new CarType(typeId);
+    }
+    catch(std::bad_alloc()){
+        return ALLOCATION_ERROR;
+    }
+    CarType* car_type = nullptr;
+    try{
+        car_type = carTypes.find(tmp);
+    }
+    catch(NotFound()){
+        delete tmp;
+        return FAILURE;
+    }
+    delete tmp;
+    CarModel* model = car_type->getModelByNum(modelId);
+    PosModelScores.deleteElement(model);
+    model->complain(t);
+    if(model->getScore() > 0)
+    {
+        PosModelScores.addElement(model);
+    }
+    else if(model->getScore() < 0)
+    {
+        car_type->removeFromZeroTree(model);
+        NegModelScores.addElement(model);
+    }
+    else //model new score is 0
+    {
+        car_type->addToZeroTree(model);
+    }
+    return SUCCESS;
+}
+
+ StatusType CarDealershipManage::GetBestSellerModelByType (int typeId, int* modelId)
+ {
+     if(typeId < 0)
+    {
+        return INVALID_INPUT;
+    }
+    if(types_num == 0)/*system is empty*/
+    {
+        return FAILURE;
+    }
+    if(typeId == 0)
+    {
+        CarModel* best_seller = nullptr;
+        try{
+            best_seller = modelSales.getOldestData();
+        }
+        //all models have zero sales
+        catch(EmptyTree()){
+            *modelId = 0;
+            return SUCCESS;
+        }
+        *modelId = best_seller->getModelNum();
+        return SUCCESS;
+    }
+    else
+    {
+        CarType* tmp = nullptr;
+        try{
+            tmp = new CarType(typeId);
+        }
+        catch(std::bad_alloc()){
+            delete tmp;
+            return ALLOCATION_ERROR;
+        }
+        CarType* car_type = nullptr;
+        try{
+            car_type = carTypes.find(tmp);
+        }
+        catch(NotFound()){
+            delete tmp;
+            return FAILURE;
+        }
+        delete tmp;
+        *modelId = car_type->getBestSeller()->getModelNum();
+        return SUCCESS;
+    }
+ }
+
+ StatusType CarDealershipManage::GetWorstModels (int numOfModels, int* types, int* models)
+ {
+    if(numOfModels <= 0)
+        return INVALID_INPUT;
+    if(numOfModels > num_of_models)
+        return FAILURE;
+    int index = 0;
+    int amount = numOfModels;
+    efficiantInorder(NegModelScores.getYoungestNode(),amount, index, types, models);
+    if(amount > 0)
+    {
+        Avl
+    }
+ }
+
+void CarDealershipManage::efficiantInorder(AvlTreeNode<CarModel*>* base,
+             int& amount, int& index, int* types, int* models)
+{
+    if(amount <= 0)
+        return;
+    if(base != nullptr)
+    {
+        --amount;
+        types[index] = base->get_data()->getType();
+        models[index] = base->get_data()->getModelNum();
+        index++;
+        if(amount > 0)
+        {
+            inOrder(base->get_right(), amount, index, types, models);
+        }
+        if(amount > 0)
+        {
+            efficiantInorder(base->get_parent(), amount, index, types, models);
+        }
+    }
+}
+
+void inOrder(AvlTreeNode<CarModel*>* root,
+             int& amount, int& index, int* types, int* models)
+{
+    if(!root)
+        return;
+    inOrder(root->get_left(),amount, index, types, models);
+    if(amount > 0)
+    {
+        --amount;
+        types[index] = root->get_data()->getType();
+        models[index] = root->get_data()->getModelNum();
+        index++;
+    }
+    inOrder(root->get_right(),amount, index, types, models);
+}
 
 /*********************************************************************/

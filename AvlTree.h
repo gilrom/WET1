@@ -2,6 +2,7 @@
 #define AVLTREE_H
 
 #include <iostream>
+#include "exceptions.h"
 
 namespace wet1
 {
@@ -87,17 +88,16 @@ namespace wet1
         }
     };
 
-    template<typename T, typename Comp, class Print = std::string>
+    template<typename T, typename Comp>
     class AvlTree {
         AvlTreeNode<T>* root;
         Comp compFunc;
-        Print printFunc;
         AvlTreeNode<T>* youngest;
         AvlTreeNode<T>* oldest;
 
     public:
-        AvlTree() : root(nullptr),compFunc(),printFunc(), youngest(nullptr), oldest(nullptr) {}
-        AvlTree(T* arr, int max , int min) : root(nullptr),compFunc(), printFunc(), youngest(nullptr) {
+        AvlTree() : root(nullptr),compFunc(), youngest(nullptr), oldest(nullptr) {}
+        AvlTree(T* arr, int max , int min) : root(nullptr),compFunc(), youngest(nullptr) {
             root = root->buildATree(arr,max,min);
             youngest = get_younget_child(root);
             oldest = get_oldest_child(root);
@@ -308,42 +308,42 @@ namespace wet1
 
     public:
 
-        AvlTreeNode<T>* find(const T& data) {
-            return find_in_tree(root,data);
+        T& find(const T& data) {
+            AvlTreeNode<T>* node = find_in_tree(root,data);
+            if(!node)
+                throw NotFound();
+            return node->get_data();
         }
 
-        void deleteElement(const T& data) {
+        void deleteElement(T& data) {
             root = deleteNode(root,data);
             youngest = get_younget_child(root);
             oldest = get_oldest_child(root);
         }
 
-        void addElement(const T& data) {
+        void addElement(T& data) {
             root = insert(data, this->root, this->root);
             youngest = get_younget_child(root);
             oldest = get_oldest_child(root);
         }
 
-        void efficiantInorderPrint(int& amount)
+        T& getOldestData()
         {
-            AvlTreeNode<T>* start = youngest;
-            if (amount <= 0)
-            {
-                return;
-            }
-            if(start != nullptr)
-            {
-                --amount;
-                std::cout << printFunc(start->get_data()) << std::endl;
-                if(amount > 0)
-                {
-                    inOrderPrint(amount, start->get_right());
-                }
-                if(amount > 0)
-                {
-                    efficiantInorderPrintAidFunc(amount, start->get_parent());
-                }
-            }
+            if(!oldest)
+                throw EmptyTree();
+            return oldest->get_data();
+        }
+
+        T& getYoungestData()
+        {
+            if(!youngest)
+                throw EmptyTree();
+            return youngest->get_data();
+        }
+
+        AvlTreeNode<T>* getYoungestNode()
+        {
+            return youngest;
         }
     };
 }
