@@ -1,0 +1,14 @@
+Init
+AddCarType 10 3
+AddCarType 21 5
+AddCarType 10 3
+AddCarType -11 2
+RemoveCarType 21
+RemoveCarType 50
+SellCar 10 1
+SellCar 10 2
+SellCar 10 1
+MakeComplaint 10 2 5
+GetBestSellerModelByType 10
+GetWorstModels 3
+Quit

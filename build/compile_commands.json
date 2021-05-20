@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/Gil/Desktop/WET1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -std=c++11 -Wall -g -o CMakeFiles\\hw1_wet.dir\\CarDealershipManage.cpp.obj -c C:\\Users\\Gil\\Desktop\\WET1\\CarDealershipManage.cpp",
+  "file": "C:/Users/Gil/Desktop/WET1/CarDealershipManage.cpp"
+},
+{
+  "directory": "C:/Users/Gil/Desktop/WET1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -std=c++11 -Wall -g -o CMakeFiles\\hw1_wet.dir\\main1.cpp.obj -c C:\\Users\\Gil\\Desktop\\WET1\\main1.cpp",
+  "file": "C:/Users/Gil/Desktop/WET1/main1.cpp"
+}
+]

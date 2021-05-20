@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Gil/Desktop/WET1/AvlTree.h
+iostream
+-
+
+C:/Users/Gil/Desktop/WET1/CarDealershipManage.cpp
+iostream
+-
+string
+-
+CarDealershipManage.h
+C:/Users/Gil/Desktop/WET1/CarDealershipManage.h
+exceptions.h
+C:/Users/Gil/Desktop/WET1/exceptions.h
+
+C:/Users/Gil/Desktop/WET1/CarDealershipManage.h
+AvlTree.h
+C:/Users/Gil/Desktop/WET1/AvlTree.h
+library.h
+C:/Users/Gil/Desktop/WET1/library.h
+string
+-
+
+C:/Users/Gil/Desktop/WET1/exceptions.h
+exception
+-
+
+C:/Users/Gil/Desktop/WET1/library.h
+
