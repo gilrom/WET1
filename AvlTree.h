@@ -106,7 +106,7 @@ namespace wet1
             root->destroyTree(root);
         };
 
-        AvlTreeNode<T>* get_root() {
+        AvlTreeNode<T>* getRoot() {
             return this->root;
         }
         void set_root(AvlTreeNode<T>* new_root) {
@@ -269,41 +269,6 @@ namespace wet1
                 return leftRotate(node);
             }
             return node;
-        }
-
-        void inOrderPrint(int& amount, AvlTreeNode<T>* tr)
-        {
-            if(amount <= 0)
-                return;
-            if(tr == nullptr)
-                return;
-            inOrderPrint(amount, tr->get_left());
-            if(amount > 0)
-            {
-                --amount;
-                std::cout << printFunc(tr->get_data()) << std::endl;
-                inOrderPrint(amount, tr->get_right());
-            }
-        }
-        void efficiantInorderPrintAidFunc(int& amount, AvlTreeNode<T>* start)
-        {
-            if (amount <= 0)
-            {
-                return;
-            }
-            if(start != nullptr)
-            {
-                --amount;
-                std::cout << printFunc(start->get_data()) << std::endl;
-                if(amount > 0)
-                {
-                    inOrderPrint(amount, start->get_right());
-                }
-                if(amount > 0)
-                {
-                    efficiantInorderPrintAidFunc(amount, start->get_parent());
-                }
-            }
         }
 
     public:

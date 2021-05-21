@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj"
+  "CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj"
+  "CMakeFiles/hw1_wet.dir/library.cpp.obj"
   "CMakeFiles/hw1_wet.dir/main1.cpp.obj"
   "hw1_wet.exe"
   "hw1_wet.exe.manifest"

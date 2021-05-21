@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "CarDealershipManage.h"
+#include "CarDealershipManager.h"
 #include "exceptions.h"
 
 #define SAIL_POINTS 10
@@ -11,8 +11,6 @@ using namespace wet1;
 
 
 /*CarModel application*/
-
-CarModel::CarModel() : model_type(0), model_num(0), sails(0), score(0) {}
 
 CarModel::CarModel(int type, int model) : model_type(type), model_num(model), sails(0), score(0) {}
 
@@ -128,17 +126,54 @@ void CarType::removeFromZeroTree(CarModel* model)
     zero_score_modelIds->deleteElement(model);
 }
 
-/**
- * prints amount of model numbers with zero score
-*/
-void CarType::printZeroScoreModels(int& amount)
+void CarType::insertZeroScoreModels(int& amount, int& index, int* types, int* model_nums)
+{
+    if(amount > 0)
+    {
+        efficiantInorder(zero_score_modelIds->getYoungestNode(), amount, index, types, model_nums);
+    }
+}
+
+void CarType::efficiantInorder(AvlTreeNode<CarModel*>* base,
+             int& amount, int& index, int* types, int* models)
 {
     if(amount <= 0)
-    {
         return;
+    if(base != nullptr)
+    {
+        --amount;
+        types[index] = base->get_data()->getType();
+        models[index] = base->get_data()->getModelNum();
+        index++;
+        if(amount > 0)
+        {
+            inOrder(base->get_right(), amount, index, types, models);
+        }
+        if(amount > 0)
+        {
+            efficiantInorder(base->get_parent(), amount, index, types, models);
+        }
     }
-    zero_score_modelIds->efficiantInorderPrint(amount);
 }
+
+void CarType::inOrder(AvlTreeNode<CarModel*>* root,
+             int& amount, int& index, int* types, int* models)
+{
+    if(!root)
+        return;
+    if(amount > 0)
+        inOrder(root->get_left(),amount, index, types, models);
+    if(amount > 0)
+    {
+        --amount;
+        types[index] = root->get_data()->getType();
+        models[index] = root->get_data()->getModelNum();
+        index++;
+    }
+    if(amount > 0)
+        inOrder(root->get_right(),amount, index, types, models);
+}
+
 /*************************************************/
 
 bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2)
@@ -146,15 +181,25 @@ bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2)
     return model1->getModelNum() < model2->getModelNum();
 }
 
-bool CompModelSales::operator()(CarModel* const model1 , CarModel* const model2)
+bool CompModelSailes::operator()(CarModel* const model1 , CarModel* const model2)
 {
     if(model1->getSails() == model2->getSails())
-        return model1->getType() > model2->getSails();
+    {
+        if(model1->getType() == model2->getType())
+            return model1->getModelNum() > model2->getModelNum();
+        return model1->getType() > model2->getType();
+    }
     return model1->getSails() < model2->getSails();
 }
 
 bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2)
 {
+    if(model1->getScore() == model2->getScore())
+    {
+        if(model1->getType() == model2->getType())
+            return model1->getModelNum() < model2->getModelNum();
+        return model1->getType() < model2->getType();
+    }
     return model1->getScore() < model2->getScore();
 }
 
@@ -163,14 +208,28 @@ bool CompTypeId::operator()(CarType* const type1 , CarType* const type2)
     return type1->getId() < type2->getId();
 }
 
-/*************CarDealershipManage application*********************************************************/
+/*************CarDealershipManager application*********************************************************/
 
 /*ctor*/
-CarDealershipManage::CarDealershipManage() : carTypes(), modelSales(),
+CarDealershipManager::CarDealershipManager() : carTypes(), modelSales(),
  PosModelScores(), NegModelScores(), types_num(0), num_of_models(0)
  {}
 
-StatusType CarDealershipManage::AddCarType(int typeId, int numOfModels)
+ CarDealershipManager::~CarDealershipManager()
+ {
+    deleteCarTypes(carTypes.getRoot());
+ }
+
+ void CarDealershipManager::deleteCarTypes(AvlTreeNode<CarType*>* root)
+{
+    if(!root)
+        return;
+    delete root->get_data();
+    deleteCarTypes(root->get_left());
+    deleteCarTypes(root->get_right());
+}
+
+StatusType CarDealershipManager::AddCarType(int typeId, int numOfModels)
 {
     if(typeId <=0 || numOfModels <= 0)
     {
@@ -199,7 +258,7 @@ StatusType CarDealershipManage::AddCarType(int typeId, int numOfModels)
     return FAILURE;
 }
 
-StatusType CarDealershipManage::RemoveCarType (int typeId)
+StatusType CarDealershipManager::RemoveCarType (int typeId)
 {
     CarType* tmp = nullptr;
     if(typeId <= 0)
@@ -234,7 +293,7 @@ StatusType CarDealershipManage::RemoveCarType (int typeId)
     return SUCCESS;
 }
 
-StatusType CarDealershipManage::SellCar (int typeId, int modelId)
+StatusType CarDealershipManager::SellCar (int typeId, int modelId)
 {
     if(typeId <=0 || modelId < 0)
     {
@@ -281,7 +340,7 @@ StatusType CarDealershipManage::SellCar (int typeId, int modelId)
     return SUCCESS;
 }
 
-StatusType CarDealershipManage::MakeComplaint (int typeId, int modelId, int t)
+StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
 {
     if(typeId <=0 || modelId < 0 || t <= 0)
     {
@@ -322,7 +381,7 @@ StatusType CarDealershipManage::MakeComplaint (int typeId, int modelId, int t)
     return SUCCESS;
 }
 
- StatusType CarDealershipManage::GetBestSellerModelByType (int typeId, int* modelId)
+ StatusType CarDealershipManager::GetBestSellerModelByType (int typeId, int* modelId)
  {
      if(typeId < 0)
     {
@@ -370,7 +429,7 @@ StatusType CarDealershipManage::MakeComplaint (int typeId, int modelId, int t)
     }
  }
 
- StatusType CarDealershipManage::GetWorstModels (int numOfModels, int* types, int* models)
+ StatusType CarDealershipManager::GetWorstModels (int numOfModels, int* types, int* models)
  {
     if(numOfModels <= 0)
         return INVALID_INPUT;
@@ -381,11 +440,16 @@ StatusType CarDealershipManage::MakeComplaint (int typeId, int modelId, int t)
     efficiantInorder(NegModelScores.getYoungestNode(),amount, index, types, models);
     if(amount > 0)
     {
-        Avl
+        efficiantInorderZeroScores(carTypes.getYoungestNode(),amount, index, types, models);
     }
+    if(amount > 0)
+    {
+        efficiantInorder(PosModelScores.getYoungestNode(),amount, index, types, models);
+    }
+    return SUCCESS;
  }
 
-void CarDealershipManage::efficiantInorder(AvlTreeNode<CarModel*>* base,
+void CarDealershipManager::efficiantInorder(AvlTreeNode<CarModel*>* base,
              int& amount, int& index, int* types, int* models)
 {
     if(amount <= 0)
@@ -407,12 +471,13 @@ void CarDealershipManage::efficiantInorder(AvlTreeNode<CarModel*>* base,
     }
 }
 
-void inOrder(AvlTreeNode<CarModel*>* root,
+void CarDealershipManager::inOrder(AvlTreeNode<CarModel*>* root,
              int& amount, int& index, int* types, int* models)
 {
     if(!root)
         return;
-    inOrder(root->get_left(),amount, index, types, models);
+    if(amount > 0)
+        inOrder(root->get_left(),amount, index, types, models);
     if(amount > 0)
     {
         --amount;
@@ -420,7 +485,42 @@ void inOrder(AvlTreeNode<CarModel*>* root,
         models[index] = root->get_data()->getModelNum();
         index++;
     }
-    inOrder(root->get_right(),amount, index, types, models);
+    if(amount > 0)
+        inOrder(root->get_right(),amount, index, types, models);
+}
+
+void CarDealershipManager::efficiantInorderZeroScores(AvlTreeNode<CarType*>* base,
+             int& amount, int& index, int* types, int* models)
+{
+    if(amount <= 0)
+        return;
+    if(base != nullptr)
+    {
+        base->get_data()->insertZeroScoreModels(amount, index, types, models);
+        if(amount > 0)
+        {
+            inOrderZeroScores(base->get_right(), amount, index, types, models);
+        }
+        if(amount > 0)
+        {
+            inOrderZeroScores(base->get_parent(), amount, index, types, models);
+        }
+    }
+}
+
+void CarDealershipManager::inOrderZeroScores(AvlTreeNode<CarType*>* root,
+             int& amount, int& index, int* types, int* models)
+{
+    if(!root)
+        return;
+    if(amount > 0)
+        inOrderZeroScores(root->get_left(),amount, index, types, models);
+    if(amount > 0)
+    {
+        root->get_data()->insertZeroScoreModels(amount, index, types, models);
+    }
+    if(amount > 0)
+        inOrderZeroScores(root->get_right(),amount, index, types, models);
 }
 
 /*********************************************************************/

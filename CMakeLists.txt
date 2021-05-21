@@ -6,4 +6,5 @@ set(MTM_FLAGS_DEBUG "-std=c++11 -Wall")
 set(MTM_FLAGS_RELEASE "{MTM_FLAGS_DEBUG} -DNDEBUG")
 set(CMAKE_CXX_FLAGS ${MTM_FLAGS_DEBUG})
 
-add_executable(hw1_wet AvlTree.h CarDealershipManage.h library.h CarDealershipManage.cpp main1.cpp)
+add_executable(hw1_wet AvlTree.h CarDealershipManager.h library.h
+ library.cpp CarDealershipManager.cpp main1.cpp exceptions.h)

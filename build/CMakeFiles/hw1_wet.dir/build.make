@@ -75,22 +75,35 @@ include CMakeFiles/hw1_wet.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hw1_wet.dir/flags.make
 
-CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj: CMakeFiles/hw1_wet.dir/flags.make
-CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj: ../CarDealershipManage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\hw1_wet.dir\CarDealershipManage.cpp.obj -c C:\Users\Gil\Desktop\WET1\CarDealershipManage.cpp
+CMakeFiles/hw1_wet.dir/library.cpp.obj: CMakeFiles/hw1_wet.dir/flags.make
+CMakeFiles/hw1_wet.dir/library.cpp.obj: ../library.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw1_wet.dir/library.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\hw1_wet.dir\library.cpp.obj -c C:\Users\Gil\Desktop\WET1\library.cpp
 
-CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gil\Desktop\WET1\CarDealershipManage.cpp > CMakeFiles\hw1_wet.dir\CarDealershipManage.cpp.i
+CMakeFiles/hw1_wet.dir/library.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw1_wet.dir/library.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gil\Desktop\WET1\library.cpp > CMakeFiles\hw1_wet.dir\library.cpp.i
 
-CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gil\Desktop\WET1\CarDealershipManage.cpp -o CMakeFiles\hw1_wet.dir\CarDealershipManage.cpp.s
+CMakeFiles/hw1_wet.dir/library.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw1_wet.dir/library.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gil\Desktop\WET1\library.cpp -o CMakeFiles\hw1_wet.dir\library.cpp.s
+
+CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj: CMakeFiles/hw1_wet.dir/flags.make
+CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj: ../CarDealershipManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\hw1_wet.dir\CarDealershipManager.cpp.obj -c C:\Users\Gil\Desktop\WET1\CarDealershipManager.cpp
+
+CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gil\Desktop\WET1\CarDealershipManager.cpp > CMakeFiles\hw1_wet.dir\CarDealershipManager.cpp.i
+
+CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gil\Desktop\WET1\CarDealershipManager.cpp -o CMakeFiles\hw1_wet.dir\CarDealershipManager.cpp.s
 
 CMakeFiles/hw1_wet.dir/main1.cpp.obj: CMakeFiles/hw1_wet.dir/flags.make
 CMakeFiles/hw1_wet.dir/main1.cpp.obj: ../main1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hw1_wet.dir/main1.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hw1_wet.dir/main1.cpp.obj"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\hw1_wet.dir\main1.cpp.obj -c C:\Users\Gil\Desktop\WET1\main1.cpp
 
 CMakeFiles/hw1_wet.dir/main1.cpp.i: cmake_force
@@ -103,19 +116,21 @@ CMakeFiles/hw1_wet.dir/main1.cpp.s: cmake_force
 
 # Object files for target hw1_wet
 hw1_wet_OBJECTS = \
-"CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj" \
+"CMakeFiles/hw1_wet.dir/library.cpp.obj" \
+"CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj" \
 "CMakeFiles/hw1_wet.dir/main1.cpp.obj"
 
 # External object files for target hw1_wet
 hw1_wet_EXTERNAL_OBJECTS =
 
-hw1_wet.exe: CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj
+hw1_wet.exe: CMakeFiles/hw1_wet.dir/library.cpp.obj
+hw1_wet.exe: CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj
 hw1_wet.exe: CMakeFiles/hw1_wet.dir/main1.cpp.obj
 hw1_wet.exe: CMakeFiles/hw1_wet.dir/build.make
 hw1_wet.exe: CMakeFiles/hw1_wet.dir/linklibs.rsp
 hw1_wet.exe: CMakeFiles/hw1_wet.dir/objects1.rsp
 hw1_wet.exe: CMakeFiles/hw1_wet.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hw1_wet.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gil\Desktop\WET1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable hw1_wet.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\hw1_wet.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

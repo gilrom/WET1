@@ -141,32 +141,59 @@ hw1_wet/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/build
 .PHONY : hw1_wet/fast
 
-CarDealershipManage.obj: CarDealershipManage.cpp.obj
+CarDealershipManager.obj: CarDealershipManager.cpp.obj
 
-.PHONY : CarDealershipManage.obj
+.PHONY : CarDealershipManager.obj
 
 # target to build an object file
-CarDealershipManage.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.obj
-.PHONY : CarDealershipManage.cpp.obj
+CarDealershipManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj
+.PHONY : CarDealershipManager.cpp.obj
 
-CarDealershipManage.i: CarDealershipManage.cpp.i
+CarDealershipManager.i: CarDealershipManager.cpp.i
 
-.PHONY : CarDealershipManage.i
+.PHONY : CarDealershipManager.i
 
 # target to preprocess a source file
-CarDealershipManage.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.i
-.PHONY : CarDealershipManage.cpp.i
+CarDealershipManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.i
+.PHONY : CarDealershipManager.cpp.i
 
-CarDealershipManage.s: CarDealershipManage.cpp.s
+CarDealershipManager.s: CarDealershipManager.cpp.s
 
-.PHONY : CarDealershipManage.s
+.PHONY : CarDealershipManager.s
 
 # target to generate assembly for a file
-CarDealershipManage.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManage.cpp.s
-.PHONY : CarDealershipManage.cpp.s
+CarDealershipManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.s
+.PHONY : CarDealershipManager.cpp.s
+
+library.obj: library.cpp.obj
+
+.PHONY : library.obj
+
+# target to build an object file
+library.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/library.cpp.obj
+.PHONY : library.cpp.obj
+
+library.i: library.cpp.i
+
+.PHONY : library.i
+
+# target to preprocess a source file
+library.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/library.cpp.i
+.PHONY : library.cpp.i
+
+library.s: library.cpp.s
+
+.PHONY : library.s
+
+# target to generate assembly for a file
+library.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1_wet.dir\build.make CMakeFiles/hw1_wet.dir/library.cpp.s
+.PHONY : library.cpp.s
 
 main1.obj: main1.cpp.obj
 
@@ -204,9 +231,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... hw1_wet
-	@echo ... CarDealershipManage.obj
-	@echo ... CarDealershipManage.i
-	@echo ... CarDealershipManage.s
+	@echo ... CarDealershipManager.obj
+	@echo ... CarDealershipManager.i
+	@echo ... CarDealershipManager.s
+	@echo ... library.obj
+	@echo ... library.i
+	@echo ... library.s
 	@echo ... main1.obj
 	@echo ... main1.i
 	@echo ... main1.s

@@ -18,14 +18,11 @@ namespace wet1
         private:
             int model_type, model_num, sails, score;
         public:
-            CarModel();
             CarModel(int type, int model);
             int getType();
             int getModelNum();
             int getScore();
             int getSails();
-            // void setType(int type);
-            // void setModelNum(int model);
             /*for sale*/
             void operator++(int);
             /*for complaint*/
@@ -33,8 +30,7 @@ namespace wet1
     };
 
     /**
-     * object function to compare models by score
-     * compares by TypeId is score is even
+     * object function to compare models by model number
      */
     class CompModelNum
     {
@@ -43,10 +39,11 @@ namespace wet1
     };
 
     /**
-     * object function to compare models by score
-     * compares by TypeId is score is even
+     * object function to compare models by sailes
+     * compares by TypeId if sailes are even
+     * compares by modelNum if TypeIDs are even
      */
-    class CompModelSales
+    class CompModelSailes
     {
         public:
             bool operator() (CarModel* const model1 , CarModel* const model2);
@@ -55,6 +52,7 @@ namespace wet1
     /**
      * object function to compare models by score
      * compares by TypeId is score is even
+     * compares by modelNum if TypeIDs are even
      */
     class CompModelScore
     {
@@ -66,9 +64,23 @@ namespace wet1
     {
         int typeId, models_num;
         CarModel* best_seller_model;
-        CarModel** models;
+        CarModel** models; //array of models
         /*zeros tree*/
-        AvlTree<CarModel*, CompModelNum>* zero_score_modelIds;
+        AvlTree<CarModel*, CompModelNum>* zero_score_modelIds;//zero score models tree
+
+        /**
+         * Scan models tree from base up and feels the given
+         * models and types arrays
+        */
+        void efficiantInorder(AvlTreeNode<CarModel*>* base,
+             int& amount, int& index, int* types, int* models);
+        /**
+         * Scan models tree by inOrder and feels the given
+         * models and types arrays
+        */
+        void inOrder(AvlTreeNode<CarModel*>* root,
+             int& amount, int& index, int* types, int* models);
+
         public:
             CarType(int id, int numOfModels);
             /*ctor for dummy CarType that will only hold typeID, used for searching*/
@@ -81,13 +93,11 @@ namespace wet1
             void setBestSeller(CarModel* new_best_seller);
             void addToZeroTree(CarModel* model);
             void removeFromZeroTree(CarModel* model);
-            void printZeroScoreModels(int& amount);
-            void efficiantInorder(TreeType tree_type, int& amount, int& index, int* types, int* models);
+            void insertZeroScoreModels(int& amount, int& index, int* types, int* models_nums);
     };
 
     /**
-     * object function to compare models by score
-     * compares by TypeId if score is even
+     * object function to compare models by TypeId
      */
     class CompTypeId
     {
@@ -95,20 +105,42 @@ namespace wet1
             bool operator() (CarType* const type1 , CarType* const type2);
     };
 
-    class CarDealershipManage
+    class CarDealershipManager
     {
         private:
             AvlTree<CarType*, CompTypeId> carTypes;
-            AvlTree<CarModel*, CompModelSales> modelSales;
+            AvlTree<CarModel*, CompModelSailes> modelSales;
             AvlTree<CarModel*, CompModelScore> PosModelScores;
             AvlTree<CarModel*, CompModelScore> NegModelScores;
             int types_num, num_of_models;
+            
+            /**The same function as in CarType
+             * used to scan PosScore and NegScore trees
+            */
             void efficiantInorder(AvlTreeNode<CarModel*>* base,
              int& amount, int& index, int* types, int* models);
+
+            /*Same as in CarType*/
             void inOrder(AvlTreeNode<CarModel*>* root,
              int& amount, int& index, int* types, int* models);
+
+            /**
+             * Scan carTypes tree from base up and feels the given
+             * models and types arrays
+             * calls CarType.efficiantInOrder() func for each type
+             */
+            void efficiantInorderZeroScores(AvlTreeNode<CarType*>* base,
+             int& amount, int& index, int* types, int* models);
+
+            /*regular inOrder used by efficiantInorderZeroScores*/
+            void inOrderZeroScores(AvlTreeNode<CarType*>* root,
+             int& amount, int& index, int* types, int* mode);
+
+             /*deletes all carTypes*/
+            void deleteCarTypes(AvlTreeNode<CarType*>* root);
         public:
-            CarDealershipManage();
+            CarDealershipManager();
+            ~CarDealershipManager();
             StatusType AddCarType (int typeId, int numOfModels);
             StatusType RemoveCarType (int typeId);
             StatusType SellCar (int typeId, int modelId);

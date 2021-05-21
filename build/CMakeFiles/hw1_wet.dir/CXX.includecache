@@ -12,17 +12,7 @@ iostream
 exceptions.h
 C:/Users/Gil/Desktop/WET1/exceptions.h
 
-C:/Users/Gil/Desktop/WET1/CarDealershipManage.cpp
-iostream
--
-string
--
-CarDealershipManage.h
-C:/Users/Gil/Desktop/WET1/CarDealershipManage.h
-exceptions.h
-C:/Users/Gil/Desktop/WET1/exceptions.h
-
-C:/Users/Gil/Desktop/WET1/CarDealershipManage.h
+C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
 AvlTree.h
 C:/Users/Gil/Desktop/WET1/AvlTree.h
 library.h
@@ -33,6 +23,12 @@ string
 C:/Users/Gil/Desktop/WET1/exceptions.h
 exception
 -
+
+C:/Users/Gil/Desktop/WET1/library.cpp
+library.h
+C:/Users/Gil/Desktop/WET1/library.h
+CarDealershipManager.h
+C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
 
 C:/Users/Gil/Desktop/WET1/library.h
 
