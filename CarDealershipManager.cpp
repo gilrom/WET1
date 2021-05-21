@@ -1,3 +1,4 @@
+#include <iostream>
 #include "CarDealershipManager.h"
 #include "exceptions.h"
 
@@ -78,7 +79,7 @@ CarType::~CarType()
  **/
 CarModel* CarType::getModelByNum(int modelNum)
 {
-    return models[models_num];
+    return models[modelNum];
 }
 
 /**
@@ -235,14 +236,14 @@ StatusType CarDealershipManager::AddCarType(int typeId, int numOfModels)
     try{
         car_type = new CarType(typeId, numOfModels);
     }
-    catch(std::bad_alloc()){
+    catch(std::bad_alloc&){
         delete car_type;
         return ALLOCATION_ERROR;
     }
     try {
         carTypes.find(car_type);
     }
-    catch(NotFound()){
+    catch(NotFound&){
         carTypes.addElement(car_type);
         car_type->setBestSeller(0); //set best seller of this type as model 0
         types_num++;
@@ -262,14 +263,14 @@ StatusType CarDealershipManager::RemoveCarType (int typeId)
     try{
         tmp = new CarType(typeId);
     }
-    catch(std::bad_alloc()){
+    catch(std::bad_alloc&){
         return ALLOCATION_ERROR;
     }
     CarType* car_type = nullptr;
     try{
         car_type = carTypes.find(tmp);
     }
-    catch(NotFound()){
+    catch(NotFound&){
         delete tmp;
         return FAILURE;
     }
@@ -299,14 +300,14 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     try{
         tmp = new CarType(typeId);
     }
-    catch(std::bad_alloc()){
+    catch(std::bad_alloc&){
         return ALLOCATION_ERROR;
     }
     CarType* car_type = nullptr;
     try{
         car_type = carTypes.find(tmp);
     }
-    catch(NotFound()){
+    catch(NotFound&){
         delete tmp;
         return FAILURE;
     }
@@ -346,14 +347,14 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
     try{
         tmp = new CarType(typeId);
     }
-    catch(std::bad_alloc()){
+    catch(std::bad_alloc&){
         return ALLOCATION_ERROR;
     }
     CarType* car_type = nullptr;
     try{
         car_type = carTypes.find(tmp);
     }
-    catch(NotFound()){
+    catch(NotFound&){
         delete tmp;
         return FAILURE;
     }
@@ -394,7 +395,7 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
             best_seller = modelSales.getOldestData();
         }
         //all models have zero sales
-        catch(EmptyTree()){
+        catch(EmptyTree&){
             *modelId = 0;
             return SUCCESS;
         }
@@ -407,7 +408,7 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
         try{
             tmp = new CarType(typeId);
         }
-        catch(std::bad_alloc()){
+        catch(std::bad_alloc&){
             delete tmp;
             return ALLOCATION_ERROR;
         }
@@ -415,7 +416,7 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
         try{
             car_type = carTypes.find(tmp);
         }
-        catch(NotFound()){
+        catch(NotFound&){
             delete tmp;
             return FAILURE;
         }

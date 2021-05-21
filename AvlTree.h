@@ -113,10 +113,11 @@ namespace wet1
     private:
 
         AvlTreeNode<T>* find_in_tree(AvlTreeNode<T>* node , const T& data_to_find ) {
-            if (!node) return nullptr;
+            if (!node)
+                return nullptr;
             if (compFunc(data_to_find, node->get_data()))
                 return find_in_tree(node->get_left(),data_to_find);
-            else if (compFunc(node->get_data(),data_to_find))
+            else if (compFunc(node->get_data(), data_to_find))
                 return find_in_tree(node->get_right(),data_to_find);
             else return node;
             return nullptr; //should never get here
@@ -224,10 +225,10 @@ namespace wet1
                     AvlTreeNode<T>* temp = node->get_left() ? node->get_left() : node->get_right() ;
 
                     // No child case
-                    if (temp == NULL)
+                    if (temp == nullptr)
                     {
                         temp = node;
-                        node = NULL;
+                        node = nullptr;
                     }
                     else // One child case
                         *node = *temp;

@@ -1,1 +1,1 @@
-/usr/bin/g++  -std=c++11 -Wall -g  -rdynamic CMakeFiles/hw1_wet.dir/library.cpp.o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o CMakeFiles/hw1_wet.dir/main1.cpp.o  -o hw1_wet 
+/usr/bin/g++  -std=c++11 -Wall -g -g  -rdynamic CMakeFiles/hw1_wet.dir/library.cpp.o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o CMakeFiles/hw1_wet.dir/main1.cpp.o  -o hw1_wet 

@@ -6,31 +6,33 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Gil/Desktop/WET1/AvlTree.h
+/home/gil.romano/WET1/AvlTree.h
 exceptions.h
-C:/Users/Gil/Desktop/WET1/exceptions.h
+/home/gil.romano/WET1/exceptions.h
 
-C:/Users/Gil/Desktop/WET1/CarDealershipManager.cpp
+/home/gil.romano/WET1/CarDealershipManager.cpp
+iostream
+-
 CarDealershipManager.h
-C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
+/home/gil.romano/WET1/CarDealershipManager.h
 exceptions.h
-C:/Users/Gil/Desktop/WET1/exceptions.h
+/home/gil.romano/WET1/exceptions.h
 
-C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
+/home/gil.romano/WET1/CarDealershipManager.h
 AvlTree.h
-C:/Users/Gil/Desktop/WET1/AvlTree.h
+/home/gil.romano/WET1/AvlTree.h
 library.h
-C:/Users/Gil/Desktop/WET1/library.h
+/home/gil.romano/WET1/library.h
 
-C:/Users/Gil/Desktop/WET1/exceptions.h
+/home/gil.romano/WET1/exceptions.h
 exception
 -
 
-C:/Users/Gil/Desktop/WET1/library.cpp
+/home/gil.romano/WET1/library.cpp
 library.h
-C:/Users/Gil/Desktop/WET1/library.h
+/home/gil.romano/WET1/library.h
 CarDealershipManager.h
-C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
+/home/gil.romano/WET1/CarDealershipManager.h
 
-C:/Users/Gil/Desktop/WET1/library.h
+/home/gil.romano/WET1/library.h
 

@@ -1,17 +1,17 @@
 [
 {
   "directory": "/home/gil.romano/WET1/build",
-  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/library.cpp.o -c /home/gil.romano/WET1/library.cpp",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g -g   -o CMakeFiles/hw1_wet.dir/library.cpp.o -c /home/gil.romano/WET1/library.cpp",
   "file": "/home/gil.romano/WET1/library.cpp"
 },
 {
   "directory": "/home/gil.romano/WET1/build",
-  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o -c /home/gil.romano/WET1/CarDealershipManager.cpp",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g -g   -o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o -c /home/gil.romano/WET1/CarDealershipManager.cpp",
   "file": "/home/gil.romano/WET1/CarDealershipManager.cpp"
 },
 {
   "directory": "/home/gil.romano/WET1/build",
-  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/main1.cpp.o -c /home/gil.romano/WET1/main1.cpp",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g -g   -o CMakeFiles/hw1_wet.dir/main1.cpp.o -c /home/gil.romano/WET1/main1.cpp",
   "file": "/home/gil.romano/WET1/main1.cpp"
 }
 ]
