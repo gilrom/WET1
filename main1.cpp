@@ -37,7 +37,7 @@ typedef enum {
     QUIT_CMD = 7
 } commandType;
 
-static const int numActions = 8;
+static const int numActions = 10;
 static const char *commandStr[] = {
         "Init",
         "AddCarType",

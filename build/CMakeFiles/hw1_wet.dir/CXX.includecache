@@ -7,8 +7,12 @@
 #IncludeRegexTransform: 
 
 C:/Users/Gil/Desktop/WET1/AvlTree.h
-iostream
--
+exceptions.h
+C:/Users/Gil/Desktop/WET1/exceptions.h
+
+C:/Users/Gil/Desktop/WET1/CarDealershipManager.cpp
+CarDealershipManager.h
+C:/Users/Gil/Desktop/WET1/CarDealershipManager.h
 exceptions.h
 C:/Users/Gil/Desktop/WET1/exceptions.h
 
@@ -17,8 +21,6 @@ AvlTree.h
 C:/Users/Gil/Desktop/WET1/AvlTree.h
 library.h
 C:/Users/Gil/Desktop/WET1/library.h
-string
--
 
 C:/Users/Gil/Desktop/WET1/exceptions.h
 exception

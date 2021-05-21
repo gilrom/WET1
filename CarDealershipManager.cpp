@@ -1,12 +1,8 @@
-#include <iostream>
-#include <string>
 #include "CarDealershipManager.h"
 #include "exceptions.h"
 
 #define SAIL_POINTS 10
 
-using std::ostream;
-using std::string;
 using namespace wet1;
 
 
@@ -57,7 +53,7 @@ CarType::CarType(int type, int numOfModels) : typeId(type), models_num(numOfMode
     {
         models[i] = new CarModel(typeId, i);
     }
-    zero_score_modelIds = new AvlTree<CarModel*, CompModelNum>(models, 0, numOfModels-1);
+    zero_score_modelIds = new AvlTree<CarModel*, CompModelNum>(models, numOfModels-1, 0);
 }
 
 CarType::CarType(int type) : typeId(type), models_num(0),

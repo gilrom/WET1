@@ -1,16 +1,10 @@
 #ifndef AVLTREE_H
 #define AVLTREE_H
 
-#include <iostream>
 #include "exceptions.h"
 
 namespace wet1
 {
-
-    int max(int x, int y) {
-        return ( x > y ) ? x : y;
-    }
-
     template<typename T>
     class AvlTreeNode {
         T data;
@@ -94,6 +88,9 @@ namespace wet1
         Comp compFunc;
         AvlTreeNode<T>* youngest;
         AvlTreeNode<T>* oldest;
+        int max(int x, int y) {
+            return ( x > y ) ? x : y;
+        }
 
     public:
         AvlTree() : root(nullptr),compFunc(), youngest(nullptr), oldest(nullptr) {}
@@ -158,12 +155,16 @@ namespace wet1
         }
 
         AvlTreeNode<T>* get_younget_child(AvlTreeNode<T>* node) {
+            if(!node)
+                return nullptr;
             if ( node->get_left() == nullptr )
                 return node;
             else return get_younget_child(node->get_left());
         }
 
         AvlTreeNode<T>* get_oldest_child(AvlTreeNode<T>* node) {
+            if(!node)
+                return nullptr;
             if ( node->get_right() == nullptr )
                 return node;
             else return get_oldest_child(node->get_right());
@@ -208,7 +209,7 @@ namespace wet1
         AvlTreeNode<T>* deleteNode(AvlTreeNode<T>* node, T& data)
         {
 
-            if (node == NULL)
+            if (node == nullptr)
                 return node;
 
             if ( compFunc(data,node->get_data()))
