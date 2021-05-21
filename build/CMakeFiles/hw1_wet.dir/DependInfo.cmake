@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Gil/Desktop/WET1/CarDealershipManager.cpp" "C:/Users/Gil/Desktop/WET1/build/CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.obj"
-  "C:/Users/Gil/Desktop/WET1/library.cpp" "C:/Users/Gil/Desktop/WET1/build/CMakeFiles/hw1_wet.dir/library.cpp.obj"
-  "C:/Users/Gil/Desktop/WET1/main1.cpp" "C:/Users/Gil/Desktop/WET1/build/CMakeFiles/hw1_wet.dir/main1.cpp.obj"
+  "/home/gil.romano/WET1/CarDealershipManager.cpp" "/home/gil.romano/WET1/build/CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o"
+  "/home/gil.romano/WET1/library.cpp" "/home/gil.romano/WET1/build/CMakeFiles/hw1_wet.dir/library.cpp.o"
+  "/home/gil.romano/WET1/main1.cpp" "/home/gil.romano/WET1/build/CMakeFiles/hw1_wet.dir/main1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

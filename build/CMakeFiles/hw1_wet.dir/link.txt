@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\hw1_wet.dir/objects.a
-C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\hw1_wet.dir/objects.a @CMakeFiles\hw1_wet.dir\objects1.rsp
-C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -std=c++11 -Wall -g -Wl,--whole-archive CMakeFiles\hw1_wet.dir/objects.a -Wl,--no-whole-archive -o hw1_wet.exe -Wl,--out-implib,libhw1_wet.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\hw1_wet.dir\linklibs.rsp
+/usr/bin/g++  -std=c++11 -Wall -g  -rdynamic CMakeFiles/hw1_wet.dir/library.cpp.o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o CMakeFiles/hw1_wet.dir/main1.cpp.o  -o hw1_wet 

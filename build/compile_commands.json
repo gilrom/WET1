@@ -1,17 +1,17 @@
 [
 {
-  "directory": "C:/Users/Gil/Desktop/WET1/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -std=c++11 -Wall -g -o CMakeFiles\\hw1_wet.dir\\library.cpp.obj -c C:\\Users\\Gil\\Desktop\\WET1\\library.cpp",
-  "file": "C:/Users/Gil/Desktop/WET1/library.cpp"
+  "directory": "/home/gil.romano/WET1/build",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/library.cpp.o -c /home/gil.romano/WET1/library.cpp",
+  "file": "/home/gil.romano/WET1/library.cpp"
 },
 {
-  "directory": "C:/Users/Gil/Desktop/WET1/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -std=c++11 -Wall -g -o CMakeFiles\\hw1_wet.dir\\CarDealershipManager.cpp.obj -c C:\\Users\\Gil\\Desktop\\WET1\\CarDealershipManager.cpp",
-  "file": "C:/Users/Gil/Desktop/WET1/CarDealershipManager.cpp"
+  "directory": "/home/gil.romano/WET1/build",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/CarDealershipManager.cpp.o -c /home/gil.romano/WET1/CarDealershipManager.cpp",
+  "file": "/home/gil.romano/WET1/CarDealershipManager.cpp"
 },
 {
-  "directory": "C:/Users/Gil/Desktop/WET1/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -std=c++11 -Wall -g -o CMakeFiles\\hw1_wet.dir\\main1.cpp.obj -c C:\\Users\\Gil\\Desktop\\WET1\\main1.cpp",
-  "file": "C:/Users/Gil/Desktop/WET1/main1.cpp"
+  "directory": "/home/gil.romano/WET1/build",
+  "command": "/usr/bin/g++    -std=c++11 -Wall -g   -o CMakeFiles/hw1_wet.dir/main1.cpp.o -c /home/gil.romano/WET1/main1.cpp",
+  "file": "/home/gil.romano/WET1/main1.cpp"
 }
 ]

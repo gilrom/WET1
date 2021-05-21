@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "hw1_wet.exe"
-		},
-		{
-			"path" : "hw1_wet.pdb"
+			"path" : "hw1_wet"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=c++11 -Wall -g"
+					"fragment" : "-std=c++11 -Wall -g  "
 				}
 			],
 			"language" : "CXX",
@@ -60,18 +57,14 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "-rdynamic",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "hw1_wet",
-	"nameOnDisk" : "hw1_wet.exe",
+	"nameOnDisk" : "hw1_wet",
 	"paths" : 
 	{
 		"build" : ".",
