@@ -231,7 +231,11 @@ namespace wet1
                         node = nullptr;
                     }
                     else // One child case
+                    {
+                        AvlTreeNode<T>* temp_parent = node->get_parent();
                         *node = *temp;
+                        node->set_parent(temp_parent);
+                    }
 
                     delete temp; // or a delete function
                 }
