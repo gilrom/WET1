@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/home/gil.romano/WET1/build/hw1_wet",
-            "args": ["<", "${workspaceFolder}/in5.txt", ">", "my_out.txt"],
+            "args": ["<", "${workspaceFolder}/in6.txt", ">", "my_out6.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

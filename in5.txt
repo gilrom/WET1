@@ -1,5 +1,35 @@
 Init
+AddCarType 1 10
+AddCarType 2 10
+AddCarType 3 10
+AddCarType 4 10
+AddCarType 5 10
+AddCarType 6 10
+AddCarType 7 10
+AddCarType 8 10
 AddCarType 9 10
+AddCarType 10 10
+AddCarType 3 10
+AddCarType 4 10
+MakeComplaint 1 7 1
+MakeComplaint 1 9 1
+MakeComplaint 1 9 1
+MakeComplaint 5 3 1
+MakeComplaint 5 3 1
+MakeComplaint 5 3 1
+MakeComplaint 5 3 1
+MakeComplaint 7 3 1
+MakeComplaint 7 3 1
+MakeComplaint 7 3 1
+MakeComplaint 7 3 1
+MakeComplaint 7 4 1
+MakeComplaint 7 4 1
+MakeComplaint 7 4 1
+MakeComplaint 7 4 1
+MakeComplaint 2 7 1
+MakeComplaint 2 9 1
+MakeComplaint 2 9 1
+MakeComplaint 4 5 10
 MakeComplaint 9 4 10
 MakeComplaint 9 5 10
 SellCar 1 0
@@ -84,18 +114,3 @@ MakeComplaint 6 1 10
 SellCar 9 4
 GetWorstModels 90
 Quit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -128,13 +128,13 @@ namespace wet1
         {
             AvlTreeNode<T>* x = y->get_left();
             AvlTreeNode<T>* z = x ? x->get_right() : nullptr ;
-            x->set_right(y);
-            x->set_parent(y->get_parent());
-            y->set_parent(x);
-            y->set_left(z);
+            if(x) x->set_right(y);
+            if(x) x->set_parent(y->get_parent());
+            if(y) y->set_parent(x);
+            if(y) y->set_left(z);
             if (z) z->set_parent(y);
-            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
+            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
 
             return x;
         }
@@ -144,13 +144,13 @@ namespace wet1
         {
             AvlTreeNode<T>* y = x->get_right();
             AvlTreeNode<T>* z = y ? y->get_left() : nullptr;
-            y->set_left(x);
-            y->set_parent(x->get_parent());
-            x->set_parent(y);
-            x->set_right(z);
+            if(y) y->set_left(x);
+            if(y) y->set_parent(x->get_parent());
+            if(x) x->set_parent(y);
+            if(x) x->set_right(z);
             if (z) z->set_parent(x);
-            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
+            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
 
             return y;
         }
@@ -208,74 +208,72 @@ namespace wet1
 
 
         AvlTreeNode<T>* deleteNode(AvlTreeNode<T>* node, const T& data)
+    {
+
+        if (node == NULL)
+            return node;
+
+        if ( compFunc(data,node->get_data()))
+            node->set_left(deleteNode(node->get_left(),data));
+        else if( compFunc(node->get_data(),data) )
+            node->set_right(deleteNode(node->get_right(),data));
+        else
         {
+            // node with max one child
+            if( (node->get_left() == nullptr ) || ( node->get_right() == nullptr) ) {
+                AvlTreeNode<T>* temp = node->get_left() ? node->get_left() : node->get_right();
 
-            if (node == nullptr)
-                return node;
+                // No child case
+                if (temp == nullptr) {
+                    temp = node;
+                    node = nullptr;
+                } else // One child case
+                {
+                    AvlTreeNode<T>* temp_parent = node->get_parent();
+                    *node = *temp;
+                    node->set_parent(temp_parent);
+                }
 
-            if ( compFunc(data,node->get_data()))
-                node->set_left(deleteNode(node->get_left(),data));
-            else if( compFunc(node->get_data(),data) )
-                node->set_right(deleteNode(node->get_right(),data));
+
+                delete temp; // or a delete function
+            }
             else
             {
-                // node with max one child
-                if( (node->get_left() == nullptr ) || ( node->get_right() == nullptr) )
-                {
-                    AvlTreeNode<T>* temp = node->get_left() ? node->get_left() : node->get_right() ;
-
-                    // No child case
-                    if (temp == nullptr)
-                    {
-                        temp = node;
-                        node = nullptr;
-                    }
-                    else // One child case
-                    {
-                        AvlTreeNode<T>* temp_parent = node->get_parent();
-                        *node = *temp;
-                        node->set_parent(temp_parent);
-                    }
-
-                    delete temp; // or a delete function
-                }
-                else
-                {
-                    // node with two children
-                    AvlTreeNode<T>* temp = get_younget_child(node->get_right());
-                    node->set_data(temp->get_data());
-                    node->set_right(deleteNode(node->get_right(),temp->get_data()));
-                }
+                // node with two children
+                AvlTreeNode<T>* temp = get_younget_child(node->get_right());
+                node->set_data(temp->get_data());
+                node->set_right(deleteNode(node->get_right(),temp->get_data()));
             }
-
-            if (node == nullptr)
-                return node;
-
-            // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
-            node->set_height(1+ max(node->get_left_height(),node->get_right_height()));
-
-            int balance = node->get_left_height() - node->get_right_height();
-
-            // LL
-            if (balance > 1 && compFunc(data,node->get_left_data()) )
-                return rightRotate(node);
-            // RR
-            if (balance < -1 && compFunc(node->get_right_data(),data))
-                return leftRotate(node);
-            // LR
-            if (balance > 1 && compFunc(node->get_left_data(),data))
-            {
-                node->set_left(leftRotate(node->get_left()));
-                return rightRotate(node);
-            }
-            // RL
-            if (balance < -1 && compFunc(data,node->get_right_data()))
-            {
-                node->set_right(rightRotate(node->get_right()));
-                return leftRotate(node);
-            }
-            return node;
         }
+
+        if (node == nullptr)
+            return node;
+
+        // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
+        node->set_height(1+ max(node->get_left_height(),node->get_right_height()));
+
+        int balance = node->get_left_height() - node->get_right_height();
+
+        // LL
+        if (balance > 1 && compFunc(data,node->get_left_data()) )
+            return rightRotate(node);
+        // RR
+        if (balance < -1 && compFunc(node->get_right_data(),data))
+            return leftRotate(node);
+        // LR
+        if (balance > 1 && compFunc(node->get_left_data(),data))
+        {
+            node->set_left(leftRotate(node->get_left()));
+            return rightRotate(node);
+        }
+        // RL
+        if (balance < -1 && compFunc(data,node->get_right_data()))
+        {
+            node->set_right(rightRotate(node->get_right()));
+            return leftRotate(node);
+        }
+        return node;
+    }
 
     public:
 

@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/gil.romano/WET1/AvlTree.h
+stdlib.h
+-
 exceptions.h
 /home/gil.romano/WET1/exceptions.h
 
@@ -26,6 +28,14 @@ library.h
 
 /home/gil.romano/WET1/exceptions.h
 exception
+-
+
+/home/gil.romano/WET1/library.cpp
+library.h
+/home/gil.romano/WET1/library.h
+CarDealershipManager.h
+/home/gil.romano/WET1/CarDealershipManager.h
+stdlib.h
 -
 
 /home/gil.romano/WET1/library.h
