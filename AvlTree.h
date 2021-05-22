@@ -112,7 +112,7 @@ namespace wet1
 
     private:
 
-        AvlTreeNode<T>* find_in_tree(AvlTreeNode<T>* node , const T& data_to_find ) {
+        AvlTreeNode<T>* find_in_tree(AvlTreeNode<T>* node , const T& data_to_find ) const {
             if (!node)
                 return nullptr;
             if (compFunc(data_to_find, node->get_data()))
@@ -207,7 +207,7 @@ namespace wet1
         }
 
 
-        AvlTreeNode<T>* deleteNode(AvlTreeNode<T>* node, T& data)
+        AvlTreeNode<T>* deleteNode(AvlTreeNode<T>* node, const T& data)
         {
 
             if (node == nullptr)
@@ -275,33 +275,34 @@ namespace wet1
 
     public:
 
-        T& find(const T& data) {
-            AvlTreeNode<T>* node = find_in_tree(root,data);
+        T find(const T& data) const
+        {
+            AvlTreeNode<T>* node = find_in_tree(root, data);
             if(!node)
                 throw NotFound();
             return node->get_data();
         }
 
-        void deleteElement(T& data) {
+        void deleteElement(const T& data) {
             root = deleteNode(root,data);
             youngest = get_younget_child(root);
             oldest = get_oldest_child(root);
         }
 
-        void addElement(T& data) {
+        void addElement(const T& data) {
             root = insert(data, this->root, this->root);
             youngest = get_younget_child(root);
             oldest = get_oldest_child(root);
         }
 
-        T& getOldestData()
+        T getOldestData() const
         {
             if(!oldest)
                 throw EmptyTree();
             return oldest->get_data();
         }
 
-        T& getYoungestData()
+        T getYoungestData() const
         {
             if(!youngest)
                 throw EmptyTree();

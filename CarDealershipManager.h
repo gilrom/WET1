@@ -34,7 +34,7 @@ namespace wet1
     class CompModelNum
     {
         public:
-            bool operator() (CarModel* const model1 , CarModel* const model2);
+            bool operator() (CarModel* const model1 , CarModel* const model2) const;
     };
 
     /**
@@ -45,7 +45,7 @@ namespace wet1
     class CompModelSailes
     {
         public:
-            bool operator() (CarModel* const model1 , CarModel* const model2);
+            bool operator() (CarModel* const model1 , CarModel* const model2) const;
     };
     
     /**
@@ -56,12 +56,12 @@ namespace wet1
     class CompModelScore
     {
         public:
-            bool operator() (CarModel* const model1 , CarModel* const model2);
+            bool operator() (CarModel* const model1 , CarModel* const model2) const;
     };
 
     class CarType
     {
-        int typeId, models_num;
+        int typeId, models_num, zero_tree_size;
         CarModel* best_seller_model;
         CarModel** models; //array of models
         /*zeros tree*/
@@ -88,6 +88,7 @@ namespace wet1
             CarModel* getModelByNum(int modelNum);
             int getId();
             int getNumOfModels();
+            int getZeroTreeSize();
             CarModel* getBestSeller();
             void setBestSeller(CarModel* new_best_seller);
             void addToZeroTree(CarModel* model);
@@ -101,13 +102,14 @@ namespace wet1
     class CompTypeId
     {
         public:
-            bool operator() (CarType* const type1 , CarType* const type2);
+            bool operator() (CarType* const type1 , CarType* const type2) const;
     };
 
     class CarDealershipManager
     {
         private:
             AvlTree<CarType*, CompTypeId> carTypes;
+            AvlTree<CarType*, CompTypeId> hasZeroScoreModels;
             AvlTree<CarModel*, CompModelSailes> modelSales;
             AvlTree<CarModel*, CompModelScore> PosModelScores;
             AvlTree<CarModel*, CompModelScore> NegModelScores;

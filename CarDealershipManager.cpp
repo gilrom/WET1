@@ -46,7 +46,7 @@ void CarModel::complain(int t)
 /*CarType application*/
 
 /*ctor*/
-CarType::CarType(int type, int numOfModels) : typeId(type), models_num(numOfModels),
+CarType::CarType(int type, int numOfModels) : typeId(type), models_num(numOfModels), zero_tree_size(numOfModels),
  best_seller_model(nullptr),models(nullptr), zero_score_modelIds(nullptr)
 {
     models = new CarModel* [models_num];
@@ -55,9 +55,10 @@ CarType::CarType(int type, int numOfModels) : typeId(type), models_num(numOfMode
         models[i] = new CarModel(typeId, i);
     }
     zero_score_modelIds = new AvlTree<CarModel*, CompModelNum>(models, numOfModels-1, 0);
+    best_seller_model = models[0];
 }
 
-CarType::CarType(int type) : typeId(type), models_num(0),
+CarType::CarType(int type) : typeId(type), models_num(0), zero_tree_size(0),
  best_seller_model(nullptr),models(nullptr), zero_score_modelIds(nullptr) {}
 
 /*dtor*/
@@ -95,6 +96,11 @@ int CarType::getNumOfModels()
     return models_num;
 }
 
+int CarType::getZeroTreeSize()
+{
+    return zero_tree_size;
+}
+
 /**
  * returns the best seller model if exist
 */
@@ -115,12 +121,14 @@ void CarType::setBestSeller(CarModel* new_best_seller)
 void CarType::addToZeroTree(CarModel* model)
 {
     zero_score_modelIds->addElement(model);
+    zero_tree_size++;
 }
 
 /*removes model to zero tree*/
 void CarType::removeFromZeroTree(CarModel* model)
 {
     zero_score_modelIds->deleteElement(model);
+    zero_tree_size--;
 }
 
 void CarType::insertZeroScoreModels(int& amount, int& index, int* types, int* model_nums)
@@ -173,12 +181,12 @@ void CarType::inOrder(AvlTreeNode<CarModel*>* root,
 
 /*************************************************/
 
-bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2)
+bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2) const
 {
     return model1->getModelNum() < model2->getModelNum();
 }
 
-bool CompModelSailes::operator()(CarModel* const model1 , CarModel* const model2)
+bool CompModelSailes::operator()(CarModel* const model1 , CarModel* const model2) const
 {
     if(model1->getSails() == model2->getSails())
     {
@@ -189,7 +197,7 @@ bool CompModelSailes::operator()(CarModel* const model1 , CarModel* const model2
     return model1->getSails() < model2->getSails();
 }
 
-bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2)
+bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2) const
 {
     if(model1->getScore() == model2->getScore())
     {
@@ -200,7 +208,7 @@ bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2)
     return model1->getScore() < model2->getScore();
 }
 
-bool CompTypeId::operator()(CarType* const type1 , CarType* const type2)
+bool CompTypeId::operator()(CarType* const type1 , CarType* const type2) const
 {
     return type1->getId() < type2->getId();
 }
@@ -245,7 +253,7 @@ StatusType CarDealershipManager::AddCarType(int typeId, int numOfModels)
     }
     catch(NotFound&){
         carTypes.addElement(car_type);
-        car_type->setBestSeller(0); //set best seller of this type as model 0
+        hasZeroScoreModels.addElement(car_type);
         types_num++;
         num_of_models += numOfModels;
         return SUCCESS;
@@ -285,6 +293,8 @@ StatusType CarDealershipManager::RemoveCarType (int typeId)
         NegModelScores.deleteElement(model);
     }
     num_of_models -= car_type->getNumOfModels();
+    carTypes.deleteElement(car_type);
+    hasZeroScoreModels.deleteElement(car_type);
     delete car_type;
     types_num--;
     return SUCCESS;
@@ -313,8 +323,10 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     }
     delete tmp;
     CarModel* model = car_type->getModelByNum(modelId);
+    int prev_score =  model->getScore();
     modelSales.deleteElement(model);
     NegModelScores.deleteElement(model);
+    PosModelScores.deleteElement(model);
     (*model)++; //add to model sales
     //update this type best seller
     CarModel* type_best_seller = car_type->getBestSeller();
@@ -323,7 +335,8 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     modelSales.addElement(model);
     if(model->getScore() > 0)
     {
-        car_type->removeFromZeroTree(model);
+        if(prev_score == 0)
+            car_type->removeFromZeroTree(model);
         PosModelScores.addElement(model);
     }
     else if(model->getScore() < 0)
@@ -333,6 +346,17 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     else //model new score is 0
     {
         car_type->addToZeroTree(model);
+    }
+    if(car_type->getZeroTreeSize() == 0)
+        hasZeroScoreModels.deleteElement(car_type);
+    else
+    {
+        try{
+            hasZeroScoreModels.find(car_type);
+        }
+        catch(NotFound&){
+            hasZeroScoreModels.addElement(car_type);
+        }
     }
     return SUCCESS;
 }
@@ -360,7 +384,9 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
     }
     delete tmp;
     CarModel* model = car_type->getModelByNum(modelId);
+    int prev_score =  model->getScore();
     PosModelScores.deleteElement(model);
+    NegModelScores.deleteElement(model);
     model->complain(t);
     if(model->getScore() > 0)
     {
@@ -368,12 +394,24 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
     }
     else if(model->getScore() < 0)
     {
-        car_type->removeFromZeroTree(model);
+        if(prev_score == 0)
+            car_type->removeFromZeroTree(model);
         NegModelScores.addElement(model);
     }
     else //model new score is 0
     {
         car_type->addToZeroTree(model);
+    }
+    if(car_type->getZeroTreeSize() == 0)
+        hasZeroScoreModels.deleteElement(car_type);
+    else
+    {
+        try{
+            hasZeroScoreModels.find(car_type);
+        }
+        catch(NotFound&){
+            hasZeroScoreModels.addElement(car_type);
+        }
     }
     return SUCCESS;
 }
@@ -437,7 +475,7 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
     efficiantInorder(NegModelScores.getYoungestNode(),amount, index, types, models);
     if(amount > 0)
     {
-        efficiantInorderZeroScores(carTypes.getYoungestNode(),amount, index, types, models);
+        efficiantInorderZeroScores(hasZeroScoreModels.getYoungestNode(),amount, index, types, models);
     }
     if(amount > 0)
     {

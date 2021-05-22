@@ -1,5 +1,7 @@
 #include"library.h"
 #include"CarDealershipManager.h"
+#include <stdlib.h>
+
 
 using namespace wet1;
 
@@ -53,4 +55,5 @@ StatusType GetWorstModels(void *DS, int numOfModels, int *types, int *models)
 void Quit(void** DS)
 {
     delete (CarDealershipManager *)(*DS);
+    *DS = NULL;
 }
