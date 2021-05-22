@@ -322,6 +322,8 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
         return FAILURE;
     }
     delete tmp;
+    if(modelId >= car_type->getNumOfModels())
+        return FAILURE;
     CarModel* model = car_type->getModelByNum(modelId);
     int prev_score =  model->getScore();
     modelSales.deleteElement(model);
@@ -383,6 +385,8 @@ StatusType CarDealershipManager::MakeComplaint (int typeId, int modelId, int t)
         return FAILURE;
     }
     delete tmp;
+    if(modelId >= car_type->getNumOfModels())
+        return FAILURE;
     CarModel* model = car_type->getModelByNum(modelId);
     int prev_score =  model->getScore();
     PosModelScores.deleteElement(model);
@@ -538,7 +542,7 @@ void CarDealershipManager::efficiantInorderZeroScores(AvlTreeNode<CarType*>* bas
         }
         if(amount > 0)
         {
-            inOrderZeroScores(base->get_parent(), amount, index, types, models);
+            efficiantInorderZeroScores(base->get_parent(), amount, index, types, models);
         }
     }
 }

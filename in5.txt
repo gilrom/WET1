@@ -1,0 +1,101 @@
+Init
+AddCarType 9 10
+MakeComplaint 9 4 10
+MakeComplaint 9 5 10
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 3
+SellCar 1 3
+SellCar 1 3
+SellCar 2 4
+SellCar 2 4
+SellCar 2 4
+SellCar 2 4
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 1
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 4
+SellCar 3 7
+SellCar 3 7
+SellCar 3 7
+SellCar 3 9
+SellCar 3 9
+SellCar 3 9
+SellCar 10 0
+SellCar 10 9
+SellCar 10 9
+SellCar 10 9
+SellCar 6 1
+SellCar 6 9
+SellCar 8 1
+SellCar 8 2
+GetBestSellerModelByType 0
+GetBestSellerModelByType 1
+GetBestSellerModelByType 2
+GetBestSellerModelByType 3
+GetBestSellerModelByType 4
+GetBestSellerModelByType 5
+GetBestSellerModelByType 6
+GetBestSellerModelByType 7
+GetBestSellerModelByType 8
+GetBestSellerModelByType 9
+GetBestSellerModelByType 10
+GetWorstModels 100
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 0
+SellCar 1 2
+SellCar 1 4
+SellCar 1 5
+SellCar 1 6
+SellCar 1 8
+SellCar 7 3
+GetBestSellerModelByType 0
+RemoveCarType 1
+GetBestSellerModelByType 0
+GetWorstModels 100
+GetWorstModels 91
+GetWorstModels 90
+MakeComplaint 6 1 10
+SellCar 9 4
+GetWorstModels 90
+Quit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

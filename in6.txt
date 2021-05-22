@@ -1,0 +1,779 @@
+Init
+GetBestSellerModelByType 0
+AddCarType 10 100
+AddCarType 11 100
+AddCarType 12 100
+AddCarType 13 100
+AddCarType 14 100
+AddCarType 15 100
+AddCarType 16 100
+AddCarType 17 100
+AddCarType 18 100
+AddCarType 19 100
+AddCarType 1 100
+AddCarType 2 100
+AddCarType 3 100
+AddCarType 4 100
+AddCarType 5 100
+AddCarType 6 100
+AddCarType 7 100
+AddCarType 8 100
+AddCarType 9 100
+AddCarType 10 100
+AddCarType 11 100
+AddCarType 12 100
+AddCarType 13 100
+AddCarType 14 100
+AddCarType 15 100
+AddCarType 16 100
+AddCarType 17 100
+AddCarType 18 100
+AddCarType 19 100
+AddCarType 20 100
+AddCarType 4 100
+AddCarType 5 100
+AddCarType 6 100
+AddCarType 7 100
+AddCarType 8 100
+AddCarType 9 100
+AddCarType 10 100
+AddCarType 11 100
+AddCarType 12 100
+AddCarType 13 100
+AddCarType 14 100
+AddCarType 15 100
+AddCarType 16 100
+AddCarType 17 100
+AddCarType 18 100
+AddCarType 19 100
+AddCarType 20 100
+AddCarType 21 100
+AddCarType 22 100
+AddCarType 23 100
+AddCarType 24 100
+AddCarType 25 100
+AddCarType 26 100
+AddCarType 27 100
+AddCarType 28 100
+AddCarType 29 100
+AddCarType 30 100
+AddCarType 31 100
+AddCarType 32 100
+AddCarType 33 100
+AddCarType 34 100
+AddCarType 21 100
+AddCarType 22 100
+AddCarType 23 100
+AddCarType 24 100
+AddCarType 25 100
+AddCarType 26 100
+AddCarType 27 100
+AddCarType 28 100
+AddCarType 29 100
+AddCarType 30 100
+AddCarType 31 100
+AddCarType 32 100
+AddCarType 33 100
+AddCarType 34 100
+AddCarType 35 100
+AddCarType 36 100
+AddCarType 37 100
+AddCarType 38 100
+AddCarType 39 100
+AddCarType 40 100
+AddCarType 41 100
+AddCarType 42 100
+AddCarType 43 100
+AddCarType 44 100
+AddCarType 45 100
+AddCarType 46 100
+AddCarType 47 100
+AddCarType 48 100
+AddCarType 49 100
+AddCarType 50 100
+AddCarType 51 100
+AddCarType 52 100
+AddCarType 53 100
+AddCarType 54 100
+AddCarType 55 100
+AddCarType 56 100
+AddCarType 57 100
+AddCarType 58 100
+AddCarType 59 100
+AddCarType 60 100
+AddCarType 61 100
+AddCarType 62 100
+AddCarType 63 100
+AddCarType 64 100
+AddCarType 65 100
+AddCarType 66 100
+AddCarType 67 100
+AddCarType 68 100
+AddCarType 69 100
+AddCarType 70 100
+AddCarType 71 100
+AddCarType 72 100
+AddCarType 73 100
+AddCarType 74 100
+AddCarType 75 100
+AddCarType 76 100
+AddCarType 77 100
+AddCarType 78 100
+AddCarType 79 100
+AddCarType 80 100
+AddCarType 81 100
+AddCarType 82 100
+AddCarType 83 100
+AddCarType 84 100
+AddCarType 85 100
+AddCarType 86 100
+AddCarType 87 100
+AddCarType 88 100
+AddCarType 89 100
+AddCarType 90 100
+AddCarType 91 100
+AddCarType 92 100
+AddCarType 93 100
+AddCarType 94 100
+AddCarType 95 100
+AddCarType 96 100
+AddCarType 97 100
+AddCarType 98 100
+AddCarType 99 100
+AddCarType 100 100
+AddCarType 5 100
+AddCarType 6 100
+AddCarType 7 100
+AddCarType 8 100
+AddCarType 9 100
+AddCarType 10 100
+AddCarType 11 100
+AddCarType 12 100
+AddCarType 65 100
+AddCarType 66 100
+AddCarType 67 100
+AddCarType 68 100
+AddCarType 69 100
+AddCarType 70 100
+AddCarType 71 100
+AddCarType 72 100
+AddCarType 73 100
+AddCarType 4 100
+AddCarType 5 100
+AddCarType 6 100
+AddCarType 7 100
+AddCarType 8 100
+AddCarType 9 100
+AddCarType 10 100
+AddCarType 11 100
+AddCarType 12 100
+AddCarType 13 100
+AddCarType 14 100
+AddCarType 15 100
+AddCarType 16 100
+AddCarType 17 100
+AddCarType 18 100
+AddCarType 19 100
+AddCarType 20 100
+AddCarType 21 100
+AddCarType 22 100
+AddCarType 23 100
+AddCarType 24 100
+AddCarType 25 100
+AddCarType 26 100
+AddCarType 27 100
+AddCarType 28 100
+AddCarType 29 100
+AddCarType 30 100
+AddCarType 31 100
+AddCarType 32 100
+AddCarType 33 100
+AddCarType 34 100
+AddCarType 16 100
+AddCarType 17 100
+AddCarType 18 100
+AddCarType 19 100
+AddCarType 20 100
+AddCarType 4 100
+AddCarType 5 100
+AddCarType 6 100
+AddCarType 7 100
+AddCarType 8 100
+AddCarType 9 100
+AddCarType 10 100
+AddCarType 11 100
+GetWorstModels 1000000
+SellCar 1 1
+SellCar 2 1
+SellCar 3 1
+SellCar 4 1
+SellCar 5 1
+SellCar 6 1
+SellCar 7 1
+SellCar 8 1
+SellCar 9 1
+SellCar 10 1
+SellCar 11 1
+SellCar 12 1
+SellCar 13 1
+SellCar 14 1
+SellCar 15 1
+SellCar 16 1
+SellCar 17 1
+SellCar 18 1
+SellCar 19 1
+SellCar 20 1
+SellCar 21 1
+SellCar 22 1
+SellCar 23 1
+SellCar 24 1
+SellCar 25 1
+SellCar 26 1
+SellCar 27 1
+SellCar 28 1
+SellCar 29 1
+SellCar 30 1
+SellCar 31 1
+SellCar 32 1
+SellCar 33 1
+SellCar 34 1
+SellCar 35 1
+SellCar 36 1
+SellCar 37 1
+SellCar 38 1
+SellCar 39 1
+SellCar 40 1
+SellCar 41 1
+SellCar 42 1
+SellCar 43 1
+SellCar 44 1
+SellCar 45 1
+SellCar 46 1
+SellCar 47 1
+SellCar 48 1
+SellCar 49 1
+SellCar 50 1
+SellCar 51 1
+SellCar 52 1
+SellCar 53 1
+SellCar 54 1
+SellCar 55 1
+SellCar 56 1
+SellCar 57 1
+SellCar 58 1
+SellCar 59 1
+SellCar 60 1
+SellCar 61 1
+SellCar 62 1
+SellCar 63 1
+SellCar 64 1
+SellCar 65 1
+SellCar 66 1
+SellCar 67 1
+SellCar 68 1
+SellCar 69 1
+SellCar 70 1
+SellCar 71 1
+SellCar 72 1
+SellCar 73 1
+SellCar 74 1
+SellCar 75 1
+SellCar 76 1
+SellCar 77 1
+SellCar 78 1
+SellCar 79 1
+SellCar 80 1
+SellCar 81 1
+SellCar 82 1
+SellCar 83 1
+SellCar 84 1
+SellCar 85 1
+SellCar 86 1
+SellCar 87 1
+SellCar 88 1
+SellCar 89 1
+SellCar 90 1
+SellCar 91 1
+SellCar 92 1
+SellCar 93 1
+SellCar 94 1
+SellCar 95 1
+SellCar 96 1
+SellCar 97 1
+SellCar 98 1
+SellCar 99 1
+SellCar 100 1
+SellCar 1 100
+SellCar 2 100
+SellCar 3 100
+SellCar 4 100
+SellCar 5 100
+SellCar 6 100
+SellCar 7 100
+SellCar 8 100
+SellCar 9 100
+SellCar 10 100
+SellCar 11 100
+SellCar 12 100
+SellCar 13 100
+SellCar 14 100
+SellCar 15 100
+SellCar 16 100
+SellCar 17 100
+SellCar 18 100
+SellCar 19 100
+SellCar 20 100
+SellCar 21 100
+SellCar 22 100
+SellCar 23 100
+SellCar 24 100
+SellCar 25 100
+SellCar 26 100
+SellCar 27 100
+SellCar 28 100
+SellCar 29 100
+SellCar 30 100
+SellCar 31 100
+SellCar 32 100
+SellCar 33 100
+SellCar 34 100
+SellCar 35 100
+SellCar 36 100
+SellCar 37 100
+SellCar 38 100
+SellCar 39 100
+SellCar 40 100
+SellCar 41 100
+SellCar 42 100
+SellCar 43 100
+SellCar 44 100
+SellCar 45 100
+SellCar 46 100
+SellCar 47 100
+SellCar 48 100
+SellCar 49 100
+SellCar 50 100
+SellCar 51 100
+SellCar 51 100
+SellCar 52 100
+SellCar 53 100
+SellCar 54 100
+SellCar 55 100
+SellCar 56 100
+SellCar 57 100
+SellCar 58 100
+SellCar 59 100
+SellCar 60 100
+SellCar 61 100
+SellCar 62 100
+SellCar 63 100
+SellCar 64 100
+SellCar 65 100
+SellCar 66 100
+SellCar 67 100
+SellCar 68 100
+SellCar 69 100
+SellCar 70 100
+SellCar 71 100
+SellCar 72 100
+SellCar 73 100
+SellCar 74 100
+SellCar 75 100
+SellCar 76 100
+SellCar 77 100
+SellCar 78 100
+SellCar 79 100
+SellCar 80 100
+SellCar 81 100
+SellCar 82 100
+SellCar 83 100
+SellCar 84 100
+SellCar 85 100
+SellCar 86 100
+SellCar 87 100
+SellCar 88 100
+SellCar 89 100
+SellCar 90 100
+SellCar 91 100
+SellCar 92 100
+SellCar 93 100
+SellCar 94 100
+SellCar 95 100
+SellCar 96 100
+SellCar 97 100
+SellCar 98 100
+SellCar 99 100
+SellCar 100 100
+MakeComplaint 1 99 10
+MakeComplaint 2 99 10
+MakeComplaint 3 99 10
+MakeComplaint 4 99 10
+MakeComplaint 5 99 10
+MakeComplaint 6 99 10
+MakeComplaint 7 99 10
+MakeComplaint 8 99 10
+MakeComplaint 9 99 10
+MakeComplaint 10 99 10
+MakeComplaint 11 99 10
+MakeComplaint 12 99 10
+MakeComplaint 13 99 10
+MakeComplaint 14 99 10
+MakeComplaint 15 99 10
+MakeComplaint 16 99 10
+MakeComplaint 17 99 10
+MakeComplaint 18 99 10
+MakeComplaint 19 99 10
+MakeComplaint 20 99 10
+MakeComplaint 21 99 10
+MakeComplaint 22 99 10
+MakeComplaint 23 99 10
+MakeComplaint 24 99 10
+MakeComplaint 25 99 10
+MakeComplaint 26 99 10
+MakeComplaint 27 99 10
+MakeComplaint 28 99 10
+MakeComplaint 29 99 10
+MakeComplaint 30 99 10
+MakeComplaint 31 99 10
+MakeComplaint 32 99 10
+MakeComplaint 33 99 10
+MakeComplaint 34 99 10
+MakeComplaint 35 99 10
+MakeComplaint 36 99 10
+MakeComplaint 37 99 10
+MakeComplaint 38 99 10
+MakeComplaint 39 99 10
+MakeComplaint 40 99 10
+MakeComplaint 41 99 10
+MakeComplaint 42 99 10
+MakeComplaint 43 99 10
+MakeComplaint 44 99 10
+MakeComplaint 45 99 10
+MakeComplaint 46 99 10
+MakeComplaint 47 99 10
+MakeComplaint 48 99 10
+MakeComplaint 49 99 10
+MakeComplaint 50 99 10
+MakeComplaint 51 99 10
+MakeComplaint 52 99 10
+MakeComplaint 53 99 10
+MakeComplaint 54 99 10
+MakeComplaint 55 99 10
+MakeComplaint 56 99 10
+MakeComplaint 57 99 10
+MakeComplaint 58 99 10
+MakeComplaint 59 99 10
+MakeComplaint 60 99 10
+MakeComplaint 61 99 10
+MakeComplaint 62 99 10
+MakeComplaint 63 99 10
+MakeComplaint 64 99 10
+MakeComplaint 65 99 10
+MakeComplaint 66 99 10
+MakeComplaint 67 99 10
+MakeComplaint 68 99 10
+MakeComplaint 69 99 10
+MakeComplaint 70 99 10
+MakeComplaint 71 99 10
+MakeComplaint 72 99 10
+MakeComplaint 73 99 10
+MakeComplaint 74 99 10
+MakeComplaint 75 99 10
+MakeComplaint 76 99 10
+MakeComplaint 77 99 10
+MakeComplaint 78 99 10
+MakeComplaint 79 99 10
+MakeComplaint 80 99 10
+MakeComplaint 81 99 10
+MakeComplaint 82 99 10
+MakeComplaint 83 99 10
+MakeComplaint 84 99 10
+MakeComplaint 85 99 10
+MakeComplaint 86 99 10
+MakeComplaint 87 99 10
+MakeComplaint 88 99 10
+MakeComplaint 89 99 10
+MakeComplaint 90 99 10
+MakeComplaint 91 99 10
+MakeComplaint 92 99 10
+MakeComplaint 93 99 10
+MakeComplaint 94 99 10
+MakeComplaint 95 99 10
+MakeComplaint 96 99 10
+MakeComplaint 97 99 10
+MakeComplaint 98 99 10
+MakeComplaint 99 99 10
+MakeComplaint 100 99 10
+MakeComplaint 1 100 10
+MakeComplaint 2 100 10
+MakeComplaint 3 100 10
+MakeComplaint 4 100 10
+MakeComplaint 5 100 10
+MakeComplaint 6 100 10
+MakeComplaint 7 100 10
+MakeComplaint 8 100 10
+MakeComplaint 9 100 10
+MakeComplaint 10 100 10
+MakeComplaint 11 100 10
+MakeComplaint 12 100 10
+MakeComplaint 13 100 10
+MakeComplaint 14 100 10
+MakeComplaint 15 100 10
+MakeComplaint 16 100 10
+MakeComplaint 17 100 10
+MakeComplaint 18 100 10
+MakeComplaint 19 100 10
+MakeComplaint 20 100 10
+MakeComplaint 21 100 10
+MakeComplaint 22 100 10
+MakeComplaint 23 100 10
+MakeComplaint 24 100 10
+MakeComplaint 25 100 10
+MakeComplaint 26 100 10
+MakeComplaint 27 100 10
+MakeComplaint 28 100 10
+MakeComplaint 29 100 10
+MakeComplaint 30 100 10
+MakeComplaint 31 100 10
+MakeComplaint 32 100 10
+MakeComplaint 33 100 10
+MakeComplaint 34 100 10
+MakeComplaint 35 100 10
+MakeComplaint 36 100 10
+MakeComplaint 37 100 10
+MakeComplaint 38 100 10
+MakeComplaint 39 100 10
+MakeComplaint 40 100 10
+MakeComplaint 41 100 10
+MakeComplaint 42 100 10
+MakeComplaint 43 100 10
+MakeComplaint 44 100 10
+MakeComplaint 45 100 10
+MakeComplaint 46 100 10
+MakeComplaint 47 100 10
+MakeComplaint 48 100 10
+MakeComplaint 49 100 10
+MakeComplaint 50 100 10
+MakeComplaint 51 100 10
+MakeComplaint 52 100 10
+MakeComplaint 53 100 10
+MakeComplaint 54 100 10
+MakeComplaint 55 100 10
+MakeComplaint 56 100 10
+MakeComplaint 57 100 10
+MakeComplaint 58 100 10
+MakeComplaint 59 100 10
+MakeComplaint 60 100 10
+MakeComplaint 61 100 10
+MakeComplaint 62 100 10
+MakeComplaint 63 100 10
+MakeComplaint 64 100 10
+MakeComplaint 65 100 10
+MakeComplaint 66 100 10
+MakeComplaint 67 100 10
+MakeComplaint 68 100 10
+MakeComplaint 69 100 10
+MakeComplaint 70 100 10
+MakeComplaint 71 100 10
+MakeComplaint 72 100 10
+MakeComplaint 73 100 10
+MakeComplaint 74 100 10
+MakeComplaint 75 100 10
+MakeComplaint 76 100 10
+MakeComplaint 77 100 10
+MakeComplaint 78 100 10
+MakeComplaint 79 100 10
+MakeComplaint 80 100 10
+MakeComplaint 81 100 10
+MakeComplaint 82 100 10
+MakeComplaint 83 100 10
+MakeComplaint 84 100 10
+MakeComplaint 85 100 10
+MakeComplaint 86 100 10
+MakeComplaint 87 100 10
+MakeComplaint 88 100 10
+MakeComplaint 89 100 10
+MakeComplaint 90 100 10
+MakeComplaint 91 100 10
+MakeComplaint 92 100 10
+MakeComplaint 93 100 10
+MakeComplaint 94 100 10
+MakeComplaint 95 100 10
+MakeComplaint 96 100 10
+MakeComplaint 97 100 10
+MakeComplaint 98 100 10
+MakeComplaint 99 100 10
+MakeComplaint 100 100 10
+GetBestSellerModelByType 0
+GetBestSellerModelByType 400
+GetBestSellerModelByType 101
+GetBestSellerModelByType 1
+GetBestSellerModelByType 2
+GetBestSellerModelByType 3
+GetBestSellerModelByType 4
+GetBestSellerModelByType 5
+GetBestSellerModelByType 6
+GetBestSellerModelByType 7
+GetBestSellerModelByType 8
+GetBestSellerModelByType 9
+GetBestSellerModelByType 10
+GetBestSellerModelByType 11
+GetBestSellerModelByType 12
+GetBestSellerModelByType 13
+GetBestSellerModelByType 14
+GetBestSellerModelByType 15
+GetBestSellerModelByType 16
+GetBestSellerModelByType 17
+GetBestSellerModelByType 18
+GetBestSellerModelByType 19
+GetBestSellerModelByType 20
+GetBestSellerModelByType 21
+GetBestSellerModelByType 22
+GetBestSellerModelByType 23
+GetBestSellerModelByType 24
+GetBestSellerModelByType 25
+GetBestSellerModelByType 26
+GetBestSellerModelByType 27
+GetBestSellerModelByType 28
+GetBestSellerModelByType 29
+GetBestSellerModelByType 30
+GetBestSellerModelByType 31
+GetBestSellerModelByType 32
+GetBestSellerModelByType 33
+GetBestSellerModelByType 34
+GetBestSellerModelByType 35
+GetBestSellerModelByType 36
+GetBestSellerModelByType 37
+GetBestSellerModelByType 38
+GetBestSellerModelByType 39
+GetBestSellerModelByType 40
+GetBestSellerModelByType 41
+GetBestSellerModelByType 42
+GetBestSellerModelByType 43
+GetBestSellerModelByType 44
+GetBestSellerModelByType 45
+GetBestSellerModelByType 46
+GetBestSellerModelByType 47
+GetBestSellerModelByType 48
+GetBestSellerModelByType 49
+GetBestSellerModelByType 50
+GetBestSellerModelByType 51
+GetBestSellerModelByType 52
+GetBestSellerModelByType 53
+GetBestSellerModelByType 54
+GetBestSellerModelByType 55
+GetBestSellerModelByType 56
+GetBestSellerModelByType 57
+GetBestSellerModelByType 58
+GetBestSellerModelByType 59
+GetBestSellerModelByType 60
+GetBestSellerModelByType 61
+GetBestSellerModelByType 62
+GetBestSellerModelByType 63
+GetBestSellerModelByType 64
+GetBestSellerModelByType 65
+GetBestSellerModelByType 66
+GetBestSellerModelByType 67
+GetBestSellerModelByType 68
+GetBestSellerModelByType 69
+GetBestSellerModelByType 70
+GetBestSellerModelByType 71
+GetBestSellerModelByType 72
+GetBestSellerModelByType 73
+GetBestSellerModelByType 74
+GetBestSellerModelByType 75
+GetBestSellerModelByType 76
+GetBestSellerModelByType 77
+GetBestSellerModelByType 78
+GetBestSellerModelByType 79
+GetBestSellerModelByType 80
+GetBestSellerModelByType 81
+GetBestSellerModelByType 82
+GetBestSellerModelByType 83
+GetBestSellerModelByType 84
+GetBestSellerModelByType 85
+GetBestSellerModelByType 86
+GetBestSellerModelByType 87
+GetBestSellerModelByType 88
+GetBestSellerModelByType 89
+GetBestSellerModelByType 90
+GetBestSellerModelByType 91
+GetBestSellerModelByType 92
+GetBestSellerModelByType 93
+GetBestSellerModelByType 94
+GetBestSellerModelByType 95
+GetBestSellerModelByType 96
+GetBestSellerModelByType 97
+GetBestSellerModelByType 98
+GetBestSellerModelByType 99
+GetBestSellerModelByType 100
+RemoveCarType 0
+RemoveCarType -10
+RemoveCarType 101
+AddCarType 0 1
+AddCarType -1 1
+AddCarType 101 0
+AddCarType 101 -10
+AddCarType 1 -10
+AddCarType 100 1
+AddCarType 1 1
+SellCar 101 0
+SellCar -11 0
+SellCar 10 102
+SellCar 10 -100
+MakeComplaint 101 0 10
+MakeComplaint -11 0 10
+MakeComplaint 10 102 10
+MakeComplaint 10 -100 10
+GetBestSellerModelByType 102
+GetBestSellerModelByType -10
+GetWorstModels 1000000
+GetWorstModels -100
+GetWorstModels 0
+GetWorstModels 10000
+SellCar 70 1
+SellCar 71 1
+SellCar 72 1
+SellCar 73 1
+SellCar 74 1
+SellCar 75 1
+SellCar 76 1
+SellCar 77 1
+SellCar 78 1
+SellCar 79 1
+SellCar 80 1
+SellCar 20 1
+SellCar 21 1
+SellCar 22 1
+SellCar 23 1
+SellCar 24 1
+SellCar 25 1
+SellCar 26 1
+SellCar 27 1
+SellCar 28 1
+SellCar 29 1
+SellCar 30 1
+MakeComplaint 80 99 10
+MakeComplaint 81 99 10
+MakeComplaint 82 99 10
+MakeComplaint 83 99 10
+MakeComplaint 84 99 10
+MakeComplaint 85 99 10
+MakeComplaint 86 99 10
+MakeComplaint 87 99 10
+MakeComplaint 88 99 10
+MakeComplaint 89 99 10
+MakeComplaint 90 99 10
+MakeComplaint 40 99 10
+MakeComplaint 41 99 10
+MakeComplaint 42 99 10
+MakeComplaint 43 99 10
+MakeComplaint 44 99 10
+MakeComplaint 45 99 10
+MakeComplaint 46 99 10
+MakeComplaint 47 99 10
+MakeComplaint 48 99 10
+MakeComplaint 49 99 10
+MakeComplaint 50 99 10
+GetWorstModels 10000
+Quit

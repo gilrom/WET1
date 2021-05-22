@@ -1,0 +1,3 @@
+init done.
+AddCarType: SUCCESS
+MakeComplaint: SUCCESS
