@@ -129,13 +129,13 @@ namespace wet1
         {
             AvlTreeNode<T>* x = y->get_left();
             AvlTreeNode<T>* z = x ? x->get_right() : nullptr ;
-            x->set_right(y);
-            x->set_parent(y->get_parent());
-            y->set_parent(x);
-            y->set_left(z);
+            if(x) x->set_right(y);
+            if(x) x->set_parent(y->get_parent());
+            if(y) y->set_parent(x);
+            if(y) y->set_left(z);
             if (z) z->set_parent(y);
-            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
+            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
 
             return x;
         }
@@ -145,13 +145,13 @@ namespace wet1
         {
             AvlTreeNode<T>* y = x->get_right();
             AvlTreeNode<T>* z = y ? y->get_left() : nullptr;
-            y->set_left(x);
-            y->set_parent(x->get_parent());
-            x->set_parent(y);
-            x->set_right(z);
+            if(y) y->set_left(x);
+            if(y) y->set_parent(x->get_parent());
+            if(x) x->set_parent(y);
+            if(x) x->set_right(z);
             if (z) z->set_parent(x);
-            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
+            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
 
             return y;
         }
