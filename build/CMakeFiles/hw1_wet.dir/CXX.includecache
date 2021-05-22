@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/gil.romano/WET1/AvlTree.h
-stdlib.h
--
 exceptions.h
 /home/gil.romano/WET1/exceptions.h
 
