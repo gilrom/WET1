@@ -129,13 +129,13 @@ namespace wet1
         {
             AvlTreeNode<T>* x = y->get_left();
             AvlTreeNode<T>* z = x ? x->get_right() : nullptr ;
-            if(x) x->set_right(y);
-            if(x) x->set_parent(y->get_parent());
-            if(y) y->set_parent(x);
-            if(y) y->set_left(z);
+            x->set_right(y);
+            x->set_parent(y->get_parent());
+            y->set_parent(x);
+            y->set_left(z);
             if (z) z->set_parent(y);
-            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
+            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
 
             return x;
         }
@@ -145,13 +145,13 @@ namespace wet1
         {
             AvlTreeNode<T>* y = x->get_right();
             AvlTreeNode<T>* z = y ? y->get_left() : nullptr;
-            if(y) y->set_left(x);
-            if(y) y->set_parent(x->get_parent());
-            if(x) x->set_parent(y);
-            if(x) x->set_right(z);
+            y->set_left(x);
+            y->set_parent(x->get_parent());
+            x->set_parent(y);
+            x->set_right(z);
             if (z) z->set_parent(x);
-            if(y) y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
-            if(x) x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            x->set_height(1 + max(x->get_left_height(),x->get_right_height()));
+            y->set_height(1 + max(y->get_left_height(),y->get_right_height()));
 
             return y;
         }
@@ -178,8 +178,9 @@ namespace wet1
                 return new AvlTreeNode<T>(data,parent_node);
             if ( compFunc(data,node->get_data()))
                 node->set_left(insert(data,node->get_left(),node));
-            else
+            else if (compFunc(node->get_data(),data))
                 node->set_right(insert(data,node->get_right(),node));
+            else return node;
 
             node->set_height(1 + max(node->get_left_height(),node->get_right_height()));
 
@@ -208,6 +209,7 @@ namespace wet1
         }
 
         int get_blance (AvlTreeNode<T>* node) {
+            if (!node) return 0;
             int balance = node->get_left_height() - node->get_right_height();
             return balance;
         }
@@ -263,19 +265,19 @@ namespace wet1
             int balance = node->get_left_height() - node->get_right_height();
 
             // LL
-            if (balance > 1 && node->get_left() && get_blance(node->get_left()) >= 0 )
+            if (balance > 1 && get_blance(node->get_left()) >= 0 )
                 return rightRotate(node);
             // RR
-            if (balance < -1 && node->get_right() && get_blance(node->get_right()) <= 0 )
+            if (balance < -1 && get_blance(node->get_right()) <= 0 )
                 return leftRotate(node);
             // LR
-            if (balance > 1 && node->get_left() && get_blance(node->get_left()) < 0 )
+            if (balance > 1 && get_blance(node->get_left()) < 0 )
             {
                 node->set_left(leftRotate(node->get_left()));
                 return rightRotate(node);
             }
             // RL
-            if (balance < -1 && node->get_right() && get_blance(node->get_right()) > 0 )
+            if (balance < -1 && get_blance(node->get_right()) > 0 )
             {
                 node->set_right(rightRotate(node->get_right()));
                 return leftRotate(node);
