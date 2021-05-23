@@ -15,13 +15,13 @@ namespace wet1
     class CarModel
     {
         private:
-            int model_type, model_num, sails, score;
+            int model_type, model_num, sales, score;
         public:
             CarModel(int type, int model);
             int getType();
             int getModelNum();
             int getScore();
-            int getSails();
+            int getSales();
             /*for sale*/
             void operator++(int);
             /*for complaint*/
@@ -64,8 +64,8 @@ namespace wet1
         int typeId, models_num, zero_tree_size;
         CarModel* best_seller_model;
         CarModel** models; //array of models
-        /*zeros tree*/
-        AvlTree<CarModel*, CompModelNum>* zero_score_modelIds;//zero score models tree
+        /*zero score models tree*/
+        AvlTree<CarModel*, CompModelNum>* zero_score_modelIds;
 
         /**
          * Scan models tree from base up and feels the given
@@ -121,7 +121,7 @@ namespace wet1
             void efficiantInorder(AvlTreeNode<CarModel*>* base,
              int& amount, int& index, int* types, int* models);
 
-            /*Same as in CarType*/
+            /*Same as in CarType(aid func for efficiantInorder)*/
             void inOrder(AvlTreeNode<CarModel*>* root,
              int& amount, int& index, int* types, int* models);
 

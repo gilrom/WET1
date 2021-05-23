@@ -9,7 +9,7 @@ using namespace wet1;
 
 /*CarModel application*/
 
-CarModel::CarModel(int type, int model) : model_type(type), model_num(model), sails(0), score(0) {}
+CarModel::CarModel(int type, int model) : model_type(type), model_num(model), sales(0), score(0) {}
 
 int CarModel::getModelNum()
 {
@@ -21,9 +21,9 @@ int CarModel::getType()
     return model_type;
 }
 
-int CarModel::getSails()
+int CarModel::getSales()
 {
-    return sails;
+    return sales;
 }
 
 int CarModel::getScore()
@@ -33,7 +33,7 @@ int CarModel::getScore()
 
 void CarModel::operator++(int)
 {
-    sails++;
+    sales++;
     score += SAIL_POINTS;
 }
 
@@ -188,13 +188,13 @@ bool CompModelNum::operator()(CarModel* const model1 , CarModel* const model2) c
 
 bool CompModelSailes::operator()(CarModel* const model1 , CarModel* const model2) const
 {
-    if(model1->getSails() == model2->getSails())
+    if(model1->getSales() == model2->getSales())
     {
         if(model1->getType() == model2->getType())
             return model1->getModelNum() > model2->getModelNum();
         return model1->getType() > model2->getType();
     }
-    return model1->getSails() < model2->getSails();
+    return model1->getSales() < model2->getSales();
 }
 
 bool CompModelScore::operator()(CarModel* const model1 , CarModel* const model2) const
@@ -332,9 +332,9 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     (*model)++; //add to model sales
     //update this type best seller
     CarModel* type_best_seller = car_type->getBestSeller();
-    if(type_best_seller->getSails() < model->getSails())
+    if(type_best_seller->getSales() < model->getSales())
         car_type->setBestSeller(model);
-    if (type_best_seller->getSails() == model->getSails() &&
+    if (type_best_seller->getSales() == model->getSales() &&
     type_best_seller->getModelNum() > model->getModelNum())
         car_type->setBestSeller(model);
     modelSales.addElement(model);
