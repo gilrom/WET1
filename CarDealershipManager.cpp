@@ -334,6 +334,9 @@ StatusType CarDealershipManager::SellCar (int typeId, int modelId)
     CarModel* type_best_seller = car_type->getBestSeller();
     if(type_best_seller->getSails() < model->getSails())
         car_type->setBestSeller(model);
+    if (type_best_seller->getSails() == model->getSails() &&
+    type_best_seller->getModelNum() > model->getModelNum())
+        car_type->setBestSeller(model);
     modelSales.addElement(model);
     if(model->getScore() > 0)
     {
